@@ -1,3 +1,5 @@
 
 shared/GadeothekUML.asta.lock
 *.lock
+.idea/libraries/
+.idea/modules.xml
