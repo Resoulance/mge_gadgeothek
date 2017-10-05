@@ -4,7 +4,7 @@ description: Android Miniprojekt für das Modul Mobile and GUI Engineering.
 
 Link: [Aufgabenstellung als pdf](https://goo.gl/vVPVB6)
 
-## Abgagetermin
+## Abgabetermin
 Donnerstag, 2.11.2017, 0810 - 0855
 
 ## Gruppe 12
