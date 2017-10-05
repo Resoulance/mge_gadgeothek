@@ -1,15 +1,15 @@
 # MGE miniproject: Gadgeothek
 
 description: Android Miniprojekt für das Modul Mobile and GUI Engineering.
-[Aufgabenstellung als pdf](https://goo.gl/vVPVB6​)
+Link: [Aufgabenstellung als pdf](https://goo.gl/vVPVB6)
 
 ## Abgagetermin
 Donnerstag, 2.11.2017, 0810 - 0855
 
 ## Gruppe 12
-*Conan Le
-*Sascha Gschwind
-*Michel Bongard
+* Conan Le
+* Sascha Gschwind
+* Michel Bongard
 
 ## Tools
 * [Miniprojekt-Server](github.com/HSR-MGE/Miniprojekt-Server​​) als git repository
