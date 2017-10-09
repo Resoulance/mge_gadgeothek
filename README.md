@@ -13,7 +13,7 @@ Donnerstag, 2.11.2017, 0810 - 0855
 * Michel Bongard
 
 ## Tools
-* [Miniprojekt-Server](github.com/HSR-MGE/Miniprojekt-Server​​) als git repository
+* [Miniprojekt-Server](https://github.com/HSR-MGE/Miniprojekt-Server) als git repository
 * [astah](http://astah.net/download "astah download") : flow charts/UML
 
  
