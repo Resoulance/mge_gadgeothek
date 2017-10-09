@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.service;
+package net.resoulance.gadgeothek.service;
 
 public class LoginToken {
     private String customerId;

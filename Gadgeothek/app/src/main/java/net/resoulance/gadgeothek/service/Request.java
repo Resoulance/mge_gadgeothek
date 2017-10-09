@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.service;
+package net.resoulance.gadgeothek.service;
 
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;

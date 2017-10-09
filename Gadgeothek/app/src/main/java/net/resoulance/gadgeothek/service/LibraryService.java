@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.service;
+package net.resoulance.gadgeothek.service;
 
 import android.util.Log;
 
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import ch.hsr.mge.gadgeothek.domain.Gadget;
-import ch.hsr.mge.gadgeothek.domain.Loan;
-import ch.hsr.mge.gadgeothek.domain.Reservation;
+import net.resoulance.gadgeothek.domain.Gadget;
+import net.resoulance.gadgeothek.domain.Loan;
+import net.resoulance.gadgeothek.domain.Reservation;
 
 public class LibraryService {
     
