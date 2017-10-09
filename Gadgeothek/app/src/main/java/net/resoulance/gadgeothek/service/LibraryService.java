@@ -4,13 +4,13 @@ import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import net.resoulance.gadgeothek.domain.Gadget;
 import net.resoulance.gadgeothek.domain.Loan;
 import net.resoulance.gadgeothek.domain.Reservation;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class LibraryService {
     
