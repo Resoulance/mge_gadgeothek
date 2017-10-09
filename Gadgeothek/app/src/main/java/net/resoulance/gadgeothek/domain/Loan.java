@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.domain;
+package net.resoulance.gadgeothek.domain;
 
 import java.util.Calendar;
 import java.util.Date;
