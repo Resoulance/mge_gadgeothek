@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="net.resoulance.gadgeothek.presentation.MainActivity">
+    tools:context="net.resoulance.gadgeothek.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -30,13 +30,13 @@
         android:text="Da noch keine Login-Logik oder Überprüfung ob schon eingeloggt wurde, habe ich als MainActivity Buttons hinzugegefügt um die Activity zu wechseln," />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/toLoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="to_Login" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/toRegisterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="to_Register" />
