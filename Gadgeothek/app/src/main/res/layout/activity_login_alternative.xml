@@ -5,57 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    android:layout_marginHorizontal="8dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="net.resoulance.gadgeothek.RegisterAlternativeActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="net.resoulance.gadgeothek.LoginAlternativeActivity">
 
     <TextView
         android:id="@+id/h1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Benutzer-Registration"
+        android:text="Willkommen"
         android:textSize="25sp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="188dp"
-        android:layout_height="181dp"
+        android:layout_width="269dp"
+        android:layout_height="254dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/hsr_logo" />
+
+    <TextView
+        android:id="@+id/h2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="in der HSR-Gadgeothek-App"
+        android:textSize="20sp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingLeft="40dp"
-        android:paddingRight="40dp">
-
-
-        <EditText
-            android:id="@+id/nameText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName" />
+        android:paddingRight="40dp"
+        android:paddingTop="40dp">
 
         <EditText
-            android:id="@+id/eMailText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="eMail Adresse"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/matrikelnummerText"
+            android:id="@+id/matrikelNummerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -63,46 +50,36 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/passwortTextEins"
+            android:id="@+id/passwortText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="Passwort"
             android:ems="10"
             android:hint="Passwort"
             android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/passwortTextZwei"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Passwort wiederholen"
-            android:inputType="textPassword" />
-
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:layout_weight="1"
         android:gravity="bottom"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/registrierenButton"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Registrieren" />
+            android:text="Login" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/registerTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:gravity="right"
-            android:text="Schon einen Account? Log dich ein!" />
+            android:text="Noch kein Konto? registriere hier!" />
 
     </LinearLayout>
 
