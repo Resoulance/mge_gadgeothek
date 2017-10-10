@@ -4,31 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     android:layout_marginHorizontal="8dp"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="net.resoulance.gadgeothek.RegisterActivity"
-    tools:showIn="@layout/activity_register">
+    tools:context="net.resoulance.gadgeothek.RegisterActivity">
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/h1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Registration" />
+        android:text="Benutzer-Registration"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="188dp"
+        android:layout_height="181dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/hsr_logo" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:columnCount="2">
-        android:layout_weight="1"
+
 
         <TextView
             android:id="@+id/textView2"
@@ -37,12 +43,11 @@
             android:text="Name:" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView"
@@ -51,7 +56,7 @@
             android:text="eMail:" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/eMailText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -64,12 +69,11 @@
             android:text="Mat-Nr:" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/matrikelnummerText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView4"
@@ -78,7 +82,7 @@
             android:text="Passwort:" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/passwortTextEins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -91,7 +95,7 @@
             android:text="Passwort (wiederholen)" />
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/passwortTextZwei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -104,16 +108,27 @@
     </GridLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_weight="1"
-        android:orientation="horizontal"></LinearLayout>
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_weight="1"
-        android:text="Registrieren" />
+        <Button
+            android:id="@+id/registrierenButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Registrieren" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Schon einen Account? Log dich ein!" />
+
+    </LinearLayout>
+
 </LinearLayout>
