@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button toLogin = (Button) findViewById(R.id.toLoginButton);
         Button toRegister = (Button) findViewById(R.id.toRegisterButton);
+        Button toRegisterAlternative = (Button) findViewById(R.id.toRegsterAlternative);
 
         toLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 setContentView(R.layout.activity_register);
+            }
+        });
+
+        toRegisterAlternative.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                setContentView(R.layout.activity_register_alternative);
             }
         });
     }
