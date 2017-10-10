@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gadgeothek</string>
+    <string name="title_activity_register">Activity_register</string>
+    <string name="title_activity__login">Activity_Login</string>
 </resources>
