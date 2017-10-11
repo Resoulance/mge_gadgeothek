@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.Toast;
 
 
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         toLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_login);
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 /*setContentView(R.layout.activity_login);*/
@@ -37,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         toRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_register);
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 /*setContentView(R.layout.activity_register);*/
@@ -62,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 /*setContentView(R.layout.activity_login_alternative);*/
            
+
             }
         });
 
