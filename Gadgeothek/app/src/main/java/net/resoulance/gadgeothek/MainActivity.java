@@ -1,11 +1,12 @@
 package net.resoulance.gadgeothek;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Button toRegister = (Button) findViewById(R.id.toRegisterButton);
         Button toRegisterAlternative = (Button) findViewById(R.id.toRegsterAlternative);
         Button toLoginAlternative = (Button) findViewById(R.id.toLoginAlternative);
+        Button toastTester = (Button) findViewById(R.id.toasttesterButton);
 
 
         toLogin.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 /*setContentView(R.layout.activity_login_alternative);*/
            
+            }
+        });
+
+        toastTester.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Context context = getApplicationContext();
+                CharSequence text = "Hello toast!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
 
