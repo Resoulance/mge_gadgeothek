@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         toLoginAlternative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                setContentView(R.layout.activity_login_alternative);
+                Intent intent = new Intent(MainActivity.this, RegisterAlternativeActivity.class);
+                startActivity(intent);
+                /*setContentView(R.layout.activity_login_alternative);*/
            
             }
         });
