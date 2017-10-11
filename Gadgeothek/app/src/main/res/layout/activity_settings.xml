@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="net.resoulance.gadgeothek.SettingsActivity"
     tools:showIn="@layout/activity_settings"
     android:orientation="vertical">
@@ -18,10 +17,15 @@
         android:text="Settings"
         android:textSize="25sp" />
 
-    <Space
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,14 +50,16 @@
             android:id="@+id/toOldRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="to_Register" />
+            android:text="to_Register(old)" />
 
         <Button
             android:id="@+id/toOldLoginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="to_Login" />
+            android:text="to_Login(old)" />
 
     </LinearLayout>
+
+
 
 </LinearLayout>
