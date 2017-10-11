@@ -18,7 +18,7 @@ public class RegisterAlternativeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_alternative);
+        setContentView(R.layout.activity_register);
 
         final EditText nameEditText = (EditText) findViewById(R.id.nameText);
         final EditText emailEditText = (EditText) findViewById(R.id.eMailText);

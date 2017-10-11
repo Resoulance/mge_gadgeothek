@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:layout_marginHorizontal="8dp"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="net.resoulance.gadgeothek.RegisterAlternativeActivity"
-    android:orientation="vertical">
+    tools:context="net.resoulance.gadgeothek._oldRegisterActivity">
 
     <TextView
         android:id="@+id/h1"
@@ -30,57 +30,82 @@
         android:layout_height="wrap_content" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp">
+        android:columnCount="2">
 
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:" />
 
         <EditText
             android:id="@+id/nameText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Name"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="eMail:" />
 
         <EditText
             android:id="@+id/eMailText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="eMail Adresse"
             android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mat-Nr:" />
 
         <EditText
             android:id="@+id/matrikelnummerText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Matrikel-Nummer"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passwort:" />
 
         <EditText
             android:id="@+id/passwortTextEins"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="Passwort"
             android:ems="10"
-            android:hint="Passwort"
             android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passwort (wiederholen)" />
 
         <EditText
             android:id="@+id/passwortTextZwei"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Passwort wiederholen"
             android:inputType="textPassword" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    </LinearLayout>
+    </GridLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

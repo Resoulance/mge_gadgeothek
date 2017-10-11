@@ -17,14 +17,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="._oldRegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".LoginActivity"
+            android:name="._oldLoginActivity"
             android:label="@string/title_activity__login"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RegisterAlternativeActivity"></activity>
+        <activity android:name=".RegisterAlternativeActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

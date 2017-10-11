@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="net.resoulance.gadgeothek.LoginActivity">
+    tools:context="net.resoulance.gadgeothek.LoginAlternativeActivity">
 
     <TextView
         android:id="@+id/h1"
@@ -33,43 +33,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2">
-
-        <TextView
-            android:id="@+id/matrikelnummerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mat-Nr:" />
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="40dp">
 
         <EditText
             android:id="@+id/matrikelNummerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Matrikel-Nummer"
             android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/passwortTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Passwort:" />
 
         <EditText
             android:id="@+id/passwortText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Passwort"
             android:inputType="textPassword" />
-
-    </GridLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

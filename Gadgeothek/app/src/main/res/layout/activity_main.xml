@@ -30,33 +30,21 @@
         android:text="Da noch keine Login-Logik oder Überprüfung ob schon eingeloggt wurde, habe ich als MainActivity Buttons hinzugegefügt um die Activity zu wechseln," />
 
     <Button
-        android:id="@+id/toLoginButton"
+        android:id="@+id/toLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="to_Login" />
+        android:text="LoginScreen" />
 
     <Button
-        android:id="@+id/toRegisterButton"
+        android:id="@+id/toRegster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="to_Register" />
+        android:text="RegisterScreen" />
 
     <Button
-        android:id="@+id/toLoginAlternative"
+        android:id="@+id/toSettingsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="to_LoginAlternative" />
-
-    <Button
-        android:id="@+id/toRegsterAlternative"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="to_RegisterAlternative" />
-
-    <Button
-        android:id="@+id/toasttesterButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ToastTester" />
+        android:text="Settings" />
 
 </LinearLayout>
