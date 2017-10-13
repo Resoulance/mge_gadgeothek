@@ -49,6 +49,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
+                // --------- Hardcoded String for Library-Service for testing purpose!!!!!!!!!!!!!!!!
+
+                libraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+
 
 
                 if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "") {
@@ -63,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onCompletion(Boolean input) {
                                 // ToDo
                                 Context context = getApplicationContext();
-                                CharSequence text = "Hello toast!";
+                                CharSequence text = "Okay";
                                 int duration = Toast.LENGTH_SHORT;
 
                                 Toast toast = Toast.makeText(context, text, duration);
@@ -74,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onError(String message) {
                                 // ToDo
                                 Context context = getApplicationContext();
-                                CharSequence text = "Hello toast!";
+                                CharSequence text = "Error";
                                 int duration = Toast.LENGTH_SHORT;
 
                                 Toast toast = Toast.makeText(context, text, duration);
