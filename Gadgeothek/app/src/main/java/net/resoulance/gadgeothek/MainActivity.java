@@ -16,41 +16,38 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button toRegisterAlternative = (Button) findViewById(R.id.toRegster);
-        Button toLoginAlternative = (Button) findViewById(R.id.toLogin);
-        Button toSettings = (Button) findViewById(R.id.toSettingsButton);
+        Button toRegister = (Button) findViewById(R.id.toRegster);
+        Button toLogin = (Button) findViewById(R.id.toLogin);
+        Button toSettings = (Button) findViewById(R.id.toDevButton);
 
         toSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(MainActivity.this, DevActivity.class);
                 startActivity(intent);
             }
         });
 
-
-        toRegisterAlternative.setOnClickListener(new View.OnClickListener() {
+        toLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegisterAlternativeActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }
         });
 
-        toLoginAlternative.setOnClickListener(new View.OnClickListener() {
+
+        toRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                setContentView(R.layout.activity_login);
-
-
-                Intent intent = new Intent(MainActivity.this, RegisterAlternativeActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
-
 
             }
         });
+
+
 
 
     }

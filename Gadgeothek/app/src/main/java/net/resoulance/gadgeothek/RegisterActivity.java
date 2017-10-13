@@ -12,7 +12,7 @@ import android.widget.Toast;
 import net.resoulance.gadgeothek.service.Callback;
 import net.resoulance.gadgeothek.service.LibraryService;
 
-public class RegisterAlternativeActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
 
     @Override

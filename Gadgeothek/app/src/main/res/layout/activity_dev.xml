@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context="net.resoulance.gadgeothek.SettingsActivity"
-    tools:showIn="@layout/activity_settings"
     android:orientation="vertical">
 
     <TextView
@@ -14,18 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Settings"
+        android:text="Dev"
         android:textSize="25sp" />
 
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,18 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ToastTester" />
-
-        <Button
-            android:id="@+id/toOldRegisterButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="to_Register(old)" />
-
-        <Button
-            android:id="@+id/toOldLoginButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="to_Login(old)" />
 
     </LinearLayout>
 

@@ -42,9 +42,9 @@
         android:text="RegisterScreen" />
 
     <Button
-        android:id="@+id/toSettingsButton"
+        android:id="@+id/toDevButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings" />
+        android:text="Dev" />
 
 </LinearLayout>
