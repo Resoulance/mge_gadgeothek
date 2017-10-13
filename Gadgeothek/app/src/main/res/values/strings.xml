@@ -32,16 +32,17 @@
 
     </string-array>
     <string-array name="pref_server_values">
-         <item>mge1.dev.ifs.hsr.ch</item>
-        <item>mge2.dev.ifs.hsr.ch</item>
-        <item>mge3.dev.ifs.hsr.ch</item>
-        <item>mge4.dev.ifs.hsr.ch</item>
-        <item>mge5.dev.ifs.hsr.ch</item>
-        <item>mge6.dev.ifs.hsr.ch</item>
-        <item>mge7.dev.ifs.hsr.ch</item>
-        <item>mge8.dev.ifs.hsr.ch</item>
-        <item>mge9.dev.ifs.hsr.ch</item>
-        <item>mge10.dev.ifs.hsr.ch</item>
+        <item>http://mge1.dev.ifs.hsr.ch/public</item>
+        <item>http://mge2.dev.ifs.hsr.ch/public</item>
+        <item>http://mge3.dev.ifs.hsr.ch/public</item>
+        <item>http://mge4.dev.ifs.hsr.ch/public</item>
+        <item>http://mge5.dev.ifs.hsr.ch/public</item>
+        <item>http://mge6.dev.ifs.hsr.ch/public</item>
+        <item>http://mge7.dev.ifs.hsr.ch/public</item>
+        <item>http://mge8.dev.ifs.hsr.ch/public</item>
+        <item>http://mge9.dev.ifs.hsr.ch/public</item>
+        <item>http://mge10.dev.ifs.hsr.ch/public</item>
+
 
     </string-array>
 

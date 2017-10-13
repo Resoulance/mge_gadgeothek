@@ -53,6 +53,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        // Start new Intent for Gadget Overview
+                        // ToDo
                     }
 
                     @Override
