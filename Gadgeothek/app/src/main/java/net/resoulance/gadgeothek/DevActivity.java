@@ -16,6 +16,15 @@ public class DevActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dev);
 
         Button toastTester = (Button) findViewById(R.id.toastTesterButton);
+        Button toSettings = (Button) findViewById(R.id.toSettings);
+
+        toSettings.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(DevActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

@@ -12,6 +12,7 @@
         android:id="@+id/h1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Willkommen"
         android:textSize="25sp" />
 
@@ -74,11 +75,11 @@
             android:text="Login" />
 
         <TextView
-            android:id="@+id/registerTextView"
+            android:id="@+id/toregisterTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="right"
+            android:gravity="center"
             android:text="Noch kein Konto? registriere hier!" />
 
     </LinearLayout>

@@ -35,6 +35,12 @@
             android:layout_height="wrap_content"
             android:text="ToastTester" />
 
+        <Button
+            android:id="@+id/toSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings" />
+
     </LinearLayout>
 
 
