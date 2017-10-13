@@ -1,32 +1,48 @@
 <resources>
     <string name="app_name">Gadgeothek</string>
     <string name="title_activity_register">Activity_register</string>
-    <string name="title_activity__login">Activity_Login</string>
+    <string name="title_activity_login">Activity_Login</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
+    <!-- Login -->
     <string name="pref_header_login">Login</string>
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Login Name</string>
-    <string name="pref_default_display_name">""</string>
-
+    <string name="pref_description_social_recommendations">Recommendations for people to contact based on your message history</string>
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
+
+    <string name="pref_title_display_name">Matrikel Nummer ändern</string>
+    <string name="pref_default_matrikel_number">"123456"</string>
+
+
+    <string-array name="pref_server_titles">
+        <item>MGE Server 1</item>
+        <item>MGE Server 2</item>
+        <item>MGE Server 3</item>
+        <item>MGE Server 4</item>
+        <item>MGE Server 5</item>
+        <item>MGE Server 6</item>
+        <item>MGE Server 7</item>
+        <item>MGE Server 8</item>
+        <item>MGE Server 9</item>
+        <item>MGE Server 10</item>
+
+
     </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
+    <string-array name="pref_server_values">
+         <item>mge1.dev.ifs.hsr.ch</item>
+        <item>mge2.dev.ifs.hsr.ch</item>
+        <item>mge3.dev.ifs.hsr.ch</item>
+        <item>mge4.dev.ifs.hsr.ch</item>
+        <item>mge5.dev.ifs.hsr.ch</item>
+        <item>mge6.dev.ifs.hsr.ch</item>
+        <item>mge7.dev.ifs.hsr.ch</item>
+        <item>mge8.dev.ifs.hsr.ch</item>
+        <item>mge9.dev.ifs.hsr.ch</item>
+        <item>mge10.dev.ifs.hsr.ch</item>
+
     </string-array>
 
     <!-- Example settings for Data & Sync -->
