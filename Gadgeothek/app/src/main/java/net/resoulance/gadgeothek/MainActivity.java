@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button toRegister = (Button) findViewById(R.id.toRegster);
         Button toLogin = (Button) findViewById(R.id.toLogin);
         Button toSettings = (Button) findViewById(R.id.toDevButton);
+        Button toReservation = (Button) findViewById(R.id.toReservationButton);
 
         toSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        toReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (MainActivity.this, ReservationActivity.class);
+                startActivity(intent);
             }
         });
 

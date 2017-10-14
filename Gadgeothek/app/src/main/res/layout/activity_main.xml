@@ -47,4 +47,10 @@
         android:layout_height="wrap_content"
         android:text="Dev" />
 
+    <Button
+        android:id="@+id/toReservationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ReservationScreen" />
+
 </LinearLayout>

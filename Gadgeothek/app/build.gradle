@@ -27,14 +27,14 @@ dependencies {
     })
     compile files('src/external/gson-2.8.2.jar')
     compile files('src/external/okhttp-3.9.0.jar')
+    // <-- hinzugefügt -->
+    // <-- hinzugefügt ende -->
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:support-vector-drawable:26.+'
-    // <-- hinzugefügt -->
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.google.code.gson:gson:2.4'
-    // <-- hinzugefügt ende -->
     testCompile 'junit:junit:4.12'
 }
