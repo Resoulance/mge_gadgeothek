@@ -73,113 +73,77 @@ public class ReservationListFragment extends Fragment {
     }
 
     private void getReservations(){
-
-        // Hardcoded Login
-        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
-        LibraryService.login("m@hsr.ch", "12345", new Callback<Boolean>() {
-                    @Override
-                    public void onCompletion(Boolean input) {
-                        LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
-                            @Override
-                            public void onCompletion(List<Reservation> reservations) {
-                                adapter = new ReservationsAdapter(reservations, itemSelectionCallback);
-                                refreshReservableGadgets();
-                                recyclerView.setAdapter(adapter);
-                                if (getUserVisibleHint() && adapter.getReservedGadgets().size() == 0) {
-                                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Reservation vorhanden", Snackbar.LENGTH_LONG)
-                                            .setAction("Add", new View.OnClickListener() {
-                                                @Override
-                                                public void onClick(View v) {
-                                                    if (adapter.getItemCount() >= 3) {
-                                                        Snackbar.make(getActivity().findViewById(android.R.id.content), "Sie haben bereits 3 Gadgets reserviert", Snackbar.LENGTH_LONG)
-                                                                .show();
-                                                    } else {
-                                                        showGadgetsDialog();
-                                                    }
-                                                }
-                                            })
-                                            .show();
+     
+        LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
+            @Override
+            public void onCompletion(List<Reservation> reservations) {
+                adapter = new ReservationsAdapter(reservations, itemSelectionCallback);
+                refreshReservableGadgets();
+                recyclerView.setAdapter(adapter);
+                if (getUserVisibleHint() && adapter.getReservedGadgets().size() == 0) {
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Reservation vorhanden", Snackbar.LENGTH_LONG)
+                            .setAction("Add", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (adapter.getItemCount() >= 3) {
+                                        Snackbar.make(getActivity().findViewById(android.R.id.content), "Sie haben bereits 3 Gadgets reserviert", Snackbar.LENGTH_LONG)
+                                                .show();
+                                    } else {
+                                        showGadgetsDialog();
+                                    }
                                 }
-                            }
+                            })
+                            .show();
+                }
+            }
 
-                            @Override
-                            public void onError(String message) {
+            @Override
+            public void onError(String message) {
 
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                    }
-                });
-
+            }
+        });
 
         setGadgets();
     }
 
-    private void setGadgets() {
-        // Hardcoded Login
-        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
-        LibraryService.login("m@hsr.ch", "12345", new Callback<Boolean>() {
-                    @Override
-                    public void onCompletion(Boolean input) {
-                        LibraryService.getGadgets(new Callback<List<Gadget>>() {
-                            @Override
-                            public void onCompletion(List<Gadget> input) {
-                                allGadgets.clear();
-                                allGadgets.addAll(input);
-                            }
+    private void setGadgets() {     
+        LibraryService.getGadgets(new Callback<List<Gadget>>() {
+            @Override
+            public void onCompletion(List<Gadget> input) {
+                allGadgets.clear();
+                allGadgets.addAll(input);
+            }
 
-                            @Override
-                            public void onError(String message) {
+            @Override
+            public void onError(String message) {
 
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                    }
-                });
+            }
+        });
 
         setNotLoanedGadgets();
     }
     private void setNotLoanedGadgets(){
-        // Hardcoded Login
-        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
-        LibraryService.login("m@hsr.ch", "12345", new Callback<Boolean>() {
-                    @Override
-                    public void onCompletion(Boolean input) {
-                        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
-                            @Override
-                            public void onCompletion(List<Loan> input) {
-                                reservableGadgets.clear();
-                                ArrayList<String> loanedGadgets = new ArrayList<String>();
-                                for (Loan loan : input) {
-                                    loanedGadgets.add(loan.getGadget().getName());
-                                }
-                                for (int i = 0; i < allGadgets.size(); i++) {
-                                    if (!loanedGadgets.contains(allGadgets.get(i).getName())) {
-                                        reservableGadgets.add(allGadgets.get(i));
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onError(String message) {
-
-                            }
-                        });
+        
+        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
+            @Override
+            public void onCompletion(List<Loan> input) {
+                reservableGadgets.clear();
+                ArrayList<String> loanedGadgets = new ArrayList<String>();
+                for (Loan loan : input) {
+                    loanedGadgets.add(loan.getGadget().getName());
+                }
+                for (int i = 0; i < allGadgets.size(); i++) {
+                    if (!loanedGadgets.contains(allGadgets.get(i).getName())) {
+                        reservableGadgets.add(allGadgets.get(i));
                     }
+                }
+            }
 
-                    @Override
-                    public void onError(String message) {
+            @Override
+            public void onError(String message) {
 
-                    }
-                });
+            }
+        });
 
     }
 
