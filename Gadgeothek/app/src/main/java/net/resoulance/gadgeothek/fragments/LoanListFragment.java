@@ -57,24 +57,23 @@ public class LoanListFragment extends Fragment {
         return rootView;
     }
 
-    /*
+
     public void getLoans() {
         // Hardcoded Login -> Sollte an dieser Stelle schon gemacht sein
         // Nur noch getLoansForCustomer() nötig dann
-        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+      /*  LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
         LibraryService.login("m@hsr.ch", "12345", new Callback<Boolean>() {
             @Override
             public void onCompletion(Boolean input) {
-                
+
             }
 
             @Override
             public void onError(String message) {
 
             }
-        });
-        */
-        
+        });*/
+
         LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
                     @Override
                     public void onCompletion(List<Loan> loans) {
