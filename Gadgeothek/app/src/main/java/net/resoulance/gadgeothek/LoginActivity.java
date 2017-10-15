@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText matrikelNumberLogin = (EditText) findViewById(R.id.matrikelNummerText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
-        final LibraryService libraryService = new LibraryService();
+        //final LibraryService libraryService = new LibraryService();
 
         // Hardcoded
         // mit lokalen Server testen --> "http://10.0.2.2:8080/public"
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 password: "12345",
                 email: "m@hsr.ch",
                 studentnumber: "10"*/
-        libraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 String matrikelNumber = matrikelNumberLogin.getText().toString();
                 String password = passwordLogin.getText().toString();
 
-                libraryService.login(matrikelNumber, password, new Callback<Boolean>() {
+                LibraryService.login(matrikelNumber, password, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {
                         Context context = getApplicationContext();
