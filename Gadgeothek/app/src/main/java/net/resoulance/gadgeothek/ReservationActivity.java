@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import net.resoulance.gadgeothek.fragments.LoanListFragment;
+import net.resoulance.gadgeothek.fragments.ReservationListFragment;
 import net.resoulance.gadgeothek.service.ItemSelectionListener;
 
 public class ReservationActivity extends AppCompatActivity implements ItemSelectionListener {
@@ -31,6 +32,9 @@ public class ReservationActivity extends AppCompatActivity implements ItemSelect
 
                     return true;
                 case R.id.navigation_reservations:
+                    ReservationListFragment reservationListFragment = new ReservationListFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, reservationListFragment);
+                    fragmentTransaction.commit();
                     return true;
             }
             return false;
