@@ -1,32 +1,40 @@
 package net.resoulance.gadgeothek;
 
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-public class ReservationActivity extends AppCompatActivity {
+import net.resoulance.gadgeothek.fragments.LoanListFragment;
+import net.resoulance.gadgeothek.service.ItemSelectionListener;
 
-    private TextView textView;
+public class ReservationActivity extends AppCompatActivity implements ItemSelectionListener {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
             switch (item.getItemId()) {
                 case R.id.navigation_loans:
-                    textView.setText(R.string.title_loans);
+                    LoanListFragment loanListFragment = new LoanListFragment();
+                    fragmentTransaction.replace(R.id.fragment_container, loanListFragment);
+                    fragmentTransaction.commit();
+
                     return true;
                 case R.id.navigation_reservations:
-                    textView.setText(R.string.title_reservations);
                     return true;
             }
             return false;
         }
-
     };
 
     @Override
@@ -34,9 +42,12 @@ public class ReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        textView = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    @Override
+    public void onItemSelected(int position) {
+
+    }
 }
