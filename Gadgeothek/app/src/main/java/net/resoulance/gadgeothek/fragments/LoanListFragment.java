@@ -52,45 +52,28 @@ public class LoanListFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
-
+        
+        
         return rootView;
     }
 
 
     public void getLoans() {
-        // Hardcoded Login -> Sollte an dieser Stelle schon gemacht sein
-        // Nur noch getLoansForCustomer() nötig dann
-      /*  LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
-        LibraryService.login("m@hsr.ch", "12345", new Callback<Boolean>() {
+        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
             @Override
-            public void onCompletion(Boolean input) {
-
+            public void onCompletion(List<Loan> loans) {
+                adapter = new LoanAdapter(loans, itemSelectionCallback);
+                recyclerView.setAdapter(adapter);
+                if(getUserVisibleHint() && adapter.getLoanedGadgets().size() == 0){
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Ausleihe vorhanden", Snackbar.LENGTH_LONG)
+                            .show();
+                }
             }
-
             @Override
             public void onError(String message) {
 
             }
-        });*/
-
-        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
-                    @Override
-                    public void onCompletion(List<Loan> loans) {
-                        adapter = new LoanAdapter(loans, itemSelectionCallback);
-                        recyclerView.setAdapter(adapter);
-                        if(getUserVisibleHint() && adapter.getLoanedGadgets().size() == 0){
-                            Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Ausleihe vorhanden", Snackbar.LENGTH_LONG)
-                                    .show();
-                        }
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                    }
-                });
-
+        });
     }
 
     @Override
