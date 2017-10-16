@@ -44,11 +44,11 @@
         android:paddingTop="40dp">
 
         <EditText
-            android:id="@+id/matrikelNummerText"
+            android:id="@+id/eMailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Matrikel-Nummer"
+            android:hint="eMail Adresse"
             android:inputType="textPersonName" />
 
         <EditText

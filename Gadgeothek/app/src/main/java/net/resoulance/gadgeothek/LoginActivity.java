@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
 
         Button loginButton = (Button) findViewById(R.id.loginButton);
-        final EditText matrikelNumberLogin = (EditText) findViewById(R.id.matrikelNummerText);
+        final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
         //final LibraryService libraryService = new LibraryService();
@@ -41,10 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String matrikelNumber = matrikelNumberLogin.getText().toString();
+                String eMail = eMailLogin.getText().toString();
                 String password = passwordLogin.getText().toString();
 
-                LibraryService.login(matrikelNumber, password, new Callback<Boolean>() {
+                LibraryService.login(eMail, password, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {
                         Context context = getApplicationContext();
@@ -56,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         // Start new Intent for Gadget Overview
                         // ToDo
+                        Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
