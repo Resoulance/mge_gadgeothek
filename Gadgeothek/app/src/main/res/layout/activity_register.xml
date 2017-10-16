@@ -10,6 +10,11 @@
     tools:context="net.resoulance.gadgeothek.RegisterActivity"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"></android.support.v7.widget.Toolbar>
+
     <TextView
         android:id="@+id/h1"
         android:layout_width="match_parent"

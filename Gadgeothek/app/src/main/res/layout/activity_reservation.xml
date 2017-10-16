@@ -8,6 +8,11 @@
     android:orientation="vertical"
     tools:context="net.resoulance.gadgeothek.ReservationActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"></android.support.v7.widget.Toolbar>
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"

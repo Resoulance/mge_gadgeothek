@@ -1,8 +1,6 @@
 package net.resoulance.gadgeothek.adapter;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,48 +81,7 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
             holder.textWaitingPosition.setText("Warteposition: " + reservation.getWatingPosition());
             holder.textWaitingPosition.setTextColor(Color.parseColor("#1976D2"));
         }
-        View.OnLongClickListener reservationEntry = new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                showDeleteDialog(v, holder);
-                return true;
-            }
-        };
-
-        holder.textViewGadgetName.setOnLongClickListener(reservationEntry);
-        holder.textViewDate.setOnLongClickListener(reservationEntry);
-        holder.textWaitingPosition.setOnLongClickListener(reservationEntry);
-        holder.itemRoot.setOnLongClickListener(reservationEntry);
-
     }
-
-
-    private void showDeleteDialog(final View v, final ViewHolder holder) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        builder.setTitle("Reservierung löschen?");
-
-        String positiveText = "Ja";
-        builder.setPositiveButton(positiveText,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        deleteEntry(holder.getAdapterPosition());
-                    }
-                });
-
-        String negativeText = "Nein";
-        builder.setNegativeButton(negativeText,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                    }
-                });
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
 
     public void deleteEntry(int position) {
         Reservation toDelete = dataset.get(position);
