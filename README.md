@@ -10,7 +10,7 @@ Donnerstag, 2.11.2017, 0810 - 0855
 ## Gruppe 12
 * Conan Le
 * Sascha Gschwind
-* Michel Bongard
+* Florian Bruhin
 
 ## Tools
 * [Miniprojekt-Server](https://github.com/HSR-MGE/Miniprojekt-Server) als git repository
