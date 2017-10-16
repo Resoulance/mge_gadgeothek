@@ -3,17 +3,24 @@ package net.resoulance.gadgeothek;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 
 
 public class MainActivity extends AppCompatActivity {
-
+//ToDO 
+    /*    @Override
+    public boolean onCreateOptionMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar);
+        return true;
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         Button toRegister = (Button) findViewById(R.id.toRegster);
