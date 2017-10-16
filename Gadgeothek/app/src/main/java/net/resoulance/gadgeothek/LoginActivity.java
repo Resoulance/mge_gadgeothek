@@ -28,14 +28,13 @@ public class LoginActivity extends AppCompatActivity {
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
-        //final LibraryService libraryService = new LibraryService();
-
         // Hardcoded
         // mit lokalen Server testen --> "http://10.0.2.2:8080/public"
 /*        name: 'Michael',
                 password: "12345",
                 email: "m@hsr.ch",
                 studentnumber: "10"*/
+
         LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onCompletion(Boolean input) {
                         Context context = getApplicationContext();
-                        CharSequence text = "Okay";
+                        CharSequence text = "Login erfolgreich";
                         int duration = Toast.LENGTH_SHORT;
 
                         Toast toast = Toast.makeText(context, text, duration);
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(String message) {
                         Context context = getApplicationContext();
-                        CharSequence text = "Error";
+                        CharSequence text = "Login fehlgeschlagen";
                         int duration = Toast.LENGTH_SHORT;
 
                         Toast toast = Toast.makeText(context, text, duration);
