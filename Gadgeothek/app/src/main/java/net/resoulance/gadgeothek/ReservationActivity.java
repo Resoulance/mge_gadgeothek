@@ -7,22 +7,14 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import net.resoulance.gadgeothek.fragments.LoanListFragment;
 import net.resoulance.gadgeothek.fragments.ReservationListFragment;
 import net.resoulance.gadgeothek.service.ItemSelectionListener;
 
-public class ReservationActivity extends AppCompatActivity implements ItemSelectionListener {
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar, menu);
-        return true;
-    }
+public class ReservationActivity extends BaseActivity implements ItemSelectionListener {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,9 +45,9 @@ public class ReservationActivity extends AppCompatActivity implements ItemSelect
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         setTitle("Loans");
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
