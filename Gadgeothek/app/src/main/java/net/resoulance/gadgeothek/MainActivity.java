@@ -8,7 +8,7 @@ import android.widget.Button;
 public class MainActivity extends BaseActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Button toRegister = (Button) findViewById(R.id.toRegster);
