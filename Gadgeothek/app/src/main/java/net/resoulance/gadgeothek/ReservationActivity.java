@@ -1,6 +1,7 @@
 package net.resoulance.gadgeothek;
 
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -29,20 +30,17 @@ public class ReservationActivity extends AppCompatActivity implements ItemSelect
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
             switch (item.getItemId()) {
                 case R.id.navigation_loans:
+                    setTitle("Loans");
                     LoanListFragment loanListFragment = new LoanListFragment();
-                    fragmentTransaction.replace(R.id.fragment_container, loanListFragment);
-                    fragmentTransaction.commit();
+                    loadFragment(loanListFragment);
 
                     return true;
                 case R.id.navigation_reservations:
+                    setTitle("Reservations");
                     ReservationListFragment reservationListFragment = new ReservationListFragment();
-                    fragmentTransaction.replace(R.id.fragment_container, reservationListFragment);
-                    fragmentTransaction.commit();
+                    loadFragment(reservationListFragment);
                     return true;
             }
             return false;
@@ -58,13 +56,24 @@ public class ReservationActivity extends AppCompatActivity implements ItemSelect
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Loans");
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        LoanListFragment loanListFragment = new LoanListFragment();
+        loadFragment(loanListFragment);
     }
 
     @Override
     public void onItemSelected(int position) {
 
+    }
+
+    public void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
     }
 }

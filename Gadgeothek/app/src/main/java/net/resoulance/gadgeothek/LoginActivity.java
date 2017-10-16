@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle(null);
 
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
 

@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle(null);
 
         final EditText nameEditText = (EditText) findViewById(R.id.nameText);
         final EditText emailEditText = (EditText) findViewById(R.id.eMailText);
