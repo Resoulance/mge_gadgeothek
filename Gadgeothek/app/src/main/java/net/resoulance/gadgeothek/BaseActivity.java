@@ -63,9 +63,6 @@ abstract class BaseActivity extends AppCompatActivity {
 
         setTitle(null);
 
-        if (!LibraryService.isLoggedIn()){
-            Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
+
     }
 }

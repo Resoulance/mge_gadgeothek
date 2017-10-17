@@ -45,15 +45,14 @@ public class LoginActivity extends BaseActivity {
                     public void onCompletion(Boolean input) {
 
                         Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
                     }
 
                     @Override
                     public void onError(String message) {
-                        Context context = getApplicationContext();
                         CharSequence text = "Login fehlgeschlagen";
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast toast = Toast.makeText(context, text, duration);
+                        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 });
