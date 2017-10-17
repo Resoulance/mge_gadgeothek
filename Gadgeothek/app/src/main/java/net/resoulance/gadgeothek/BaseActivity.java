@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,10 @@ import net.resoulance.gadgeothek.service.Callback;
 import net.resoulance.gadgeothek.service.LibraryService;
 
 abstract class BaseActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor prefEditor;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
@@ -64,9 +69,13 @@ abstract class BaseActivity extends AppCompatActivity {
 
 
                 //Werte aus der Settings lesen und dann über den Toaster zeigen
+                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-                Toast toast = Toast.makeText(getApplicationContext(), "Tester", Toast.LENGTH_SHORT);
+                String testString = sharedPreferences.getString("loginpref_email", "bla");
+
+
+                Toast toast = Toast.makeText(getApplicationContext(), testString, Toast.LENGTH_SHORT);
                 toast.show();
 
                 return true;
