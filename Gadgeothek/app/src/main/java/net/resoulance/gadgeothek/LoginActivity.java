@@ -56,7 +56,7 @@ public class LoginActivity extends BaseActivity {
 
                 @Override
                 public void onError(String message) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "automatisches Login fehlgeschlagen", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                     toast.show();
 
                 }
@@ -77,6 +77,7 @@ public class LoginActivity extends BaseActivity {
 
                 prefEditor.putString("loginpref_email", eMail);
                 prefEditor.putString("loginpref_password", password);
+                prefEditor.putBoolean("loginpref_logout", false);
                 prefEditor.commit();
 
 
