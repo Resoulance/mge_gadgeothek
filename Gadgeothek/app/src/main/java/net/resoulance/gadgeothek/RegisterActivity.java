@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import net.resoulance.gadgeothek.service.Callback;
 import net.resoulance.gadgeothek.service.LibraryService;
+
+import org.w3c.dom.Text;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -29,6 +33,12 @@ public class RegisterActivity extends BaseActivity {
         final EditText matrikelNumberEditText = (EditText) findViewById(R.id.matrikelnummerText);
         final EditText passwordOneEditText = (EditText) findViewById(R.id.passwortTextEins);
         final EditText passwordTwoEditText = (EditText) findViewById(R.id.passwortTextZwei);
+
+        final TextInputLayout nameWrapper = (TextInputLayout) findViewById(R.id.textinputName);
+        final TextInputLayout emailWrapper = (TextInputLayout) findViewById(R.id.textinputEmail);
+        final TextInputLayout matrikelnumberWrapper = (TextInputLayout) findViewById(R.id.textinputMatrikelNumber);
+        final TextInputLayout passwordOneWrapper = (TextInputLayout) findViewById(R.id.textinputPassword);
+        final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
 
         final LibraryService libraryService = new LibraryService();
@@ -61,8 +71,8 @@ public class RegisterActivity extends BaseActivity {
                     // simpler Passwortchecker: keine Längenüberprüfung, Sonderzeichen etc.
                     if (passwordOne != passwordTwo) {
 
-                        passwordTwoEditText.setHint("Passwort stimmt nicht überein");
-                        passwordTwoEditText.setHintTextColor(Color.RED);
+                        passwordTwoWrapper.setError("Passwort stimmt nicht überein");
+
                     } else {
                         libraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
