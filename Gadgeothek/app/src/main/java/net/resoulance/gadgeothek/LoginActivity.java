@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity {
 
 
 
-        if (alwaysLogin) { //  && sharedPreferences.getBoolean("loginpref_logout", false)
+        if (alwaysLogin && !sharedPreferences.getBoolean("loginpref_logout", true)) {
             eMail = sharedPreferences.getString("loginpref_email", "");
             password = sharedPreferences.getString("loginpref_password", "");
             LibraryService.login(eMail, password, new Callback<Boolean>() {

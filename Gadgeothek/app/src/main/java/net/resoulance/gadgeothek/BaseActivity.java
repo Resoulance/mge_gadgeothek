@@ -16,7 +16,6 @@ import net.resoulance.gadgeothek.service.LibraryService;
 abstract class BaseActivity extends AppCompatActivity {
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
@@ -25,6 +24,8 @@ abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.option_settings:
@@ -33,11 +34,14 @@ abstract class BaseActivity extends AppCompatActivity {
 
                 return true;
             case R.id.option_logout:
+
+                sharedPreferences.edit().putBoolean("loginpref_logout",true);
+                sharedPreferences.edit().commit();
+
                 if (LibraryService.hasToken()) {
                     LibraryService.logout(new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
-
 
 
                             Toast toast = Toast.makeText(getApplicationContext(), "Erfolgreich ausgeloggt", Toast.LENGTH_SHORT);
@@ -47,6 +51,9 @@ abstract class BaseActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         }
+
+
+
 
                         @Override
                         public void onError(String message) {
@@ -66,7 +73,7 @@ abstract class BaseActivity extends AppCompatActivity {
                 //Werte aus der Settings lesen und dann über den Toaster zeigen
 
 
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
                 String testString = sharedPreferences.getString("loginpref_serveraddress", "bla");
 
 
