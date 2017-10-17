@@ -25,28 +25,49 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
 
         Button loginButton = (Button) findViewById(R.id.loginButton);
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
-        SharedPreferences sharedPreferences;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+        String eMail, password;
+        boolean alwaysLogin;
 
-
-        // Note: checkt ob nicht eingeloggt -> checkt in der Settings ob die Option angewählt wurde --> automatisch einlogen
-        if (!LibraryService.isLoggedIn()){
-            if (true) {
-
-            }
-
-        }
 
         // ToDo: Server Adresse aus der sharedpref holen
         LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+
+        alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
+
+        if (alwaysLogin){
+            eMail = sharedPreferences.getString("loginpref_email","");
+            password = sharedPreferences.getString("loginpref_password", "");
+            LibraryService.login(eMail, password, new Callback<Boolean>() {
+                @Override
+                public void onCompletion(Boolean input) {
+                    Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onError(String message) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "automatisches Login fehlgeschlagen", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+            });
+
+
+        }
+
+        // setzt letzte e-Mail Adresse in das Textfeld ein, wenn es nicht existiert dann einen leeren String
+        eMailLogin.setText(sharedPreferences.getString("loginpref_email",""));
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +77,7 @@ public class LoginActivity extends BaseActivity {
 
 
                 prefEditor.putString("loginpref_email", eMail);
+                prefEditor.putString("loginpref_password", password);
                 prefEditor.commit();
 
 

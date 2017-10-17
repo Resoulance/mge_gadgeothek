@@ -12,7 +12,7 @@
 
     <SwitchPreference
         android:defaultValue="true"
-        android:key="loginpref_Password_switch"
+        android:key="loginpref_switch"
         android:summary="Merkt sich die Login Daten um dauerhaft eingeloggt zu bleiben"
         android:title="Passwort merken" />
 

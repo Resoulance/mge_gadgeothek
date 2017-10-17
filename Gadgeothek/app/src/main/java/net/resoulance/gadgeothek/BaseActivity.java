@@ -16,9 +16,6 @@ import net.resoulance.gadgeothek.service.LibraryService;
 abstract class BaseActivity extends AppCompatActivity {
 
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
@@ -57,7 +54,7 @@ abstract class BaseActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(String message) {
-                                                Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
                         toast.show();
 
                     }
@@ -66,11 +63,11 @@ abstract class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.option_Tester:
 
-                                //Werte aus der Settings lesen und dann über den Toaster zeigen
+                //Werte aus der Settings lesen und dann über den Toaster zeigen
 
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String testString = sharedPreferences.getString("loginpref_email", "bla");
+                String testString = sharedPreferences.getString("loginpref_password", "bla");
 
 
                 Toast toast = Toast.makeText(getApplicationContext(), testString, Toast.LENGTH_SHORT);
