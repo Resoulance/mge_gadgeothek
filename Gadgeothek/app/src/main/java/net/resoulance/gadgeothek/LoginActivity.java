@@ -30,12 +30,7 @@ public class LoginActivity extends BaseActivity {
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
-        // Hardcoded
-        // mit lokalen Server testen --> "http://10.0.2.2:8080/public"
-/*        name: 'Michael',
-                password: "12345",
-                email: "m@hsr.ch",
-                studentnumber: "10"*/
+        // ToDo: Hardcoded
 
         LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
 
@@ -66,7 +61,6 @@ public class LoginActivity extends BaseActivity {
                         Context context = getApplicationContext();
                         CharSequence text = "Login fehlgeschlagen";
                         int duration = Toast.LENGTH_SHORT;
-
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     }
