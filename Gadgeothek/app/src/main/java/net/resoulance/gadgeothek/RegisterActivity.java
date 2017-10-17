@@ -41,7 +41,7 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
 
-        final LibraryService libraryService = new LibraryService();
+
 
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
         toLogin.setOnClickListener(new View.OnClickListener(){
@@ -61,9 +61,9 @@ public class RegisterActivity extends BaseActivity {
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
-                // --------- Hardcoded String for Library-Service for testing purpose!!!!!!!!!!!!!!!!
+                // ToDo: --------- Hardcoded String for Library-Service for testing purpose!!!!!!!!!!!!!!!!
 
-                libraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+                LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
 
 
 
@@ -74,7 +74,7 @@ public class RegisterActivity extends BaseActivity {
                         passwordTwoWrapper.setError("Passwort stimmt nicht überein");
 
                     } else {
-                        libraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
+                        LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
                                 // ToDo

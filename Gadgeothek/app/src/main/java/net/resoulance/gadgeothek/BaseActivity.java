@@ -1,11 +1,15 @@
 package net.resoulance.gadgeothek;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import net.resoulance.gadgeothek.service.Callback;
+import net.resoulance.gadgeothek.service.LibraryService;
 
 /**
  * Created by sasch on 16.10.2017.
@@ -23,22 +27,28 @@ abstract class BaseActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.option_settings:
-                // TODO: Code hier
-                Context context1 = getApplicationContext();
-                CharSequence text1 = "Settings clicked!";
-                int duration1 = Toast.LENGTH_SHORT;
+                Intent intent = new Intent(BaseActivity.this, SettingsActivity.class);
+                startActivity(intent);
 
-                Toast toast1 = Toast.makeText(context1, text1, duration1);
-                toast1.show();
                 return true;
             case R.id.option_logout:
-                // TODO Code hier
-                Context context2 = getApplicationContext();
-                CharSequence text2 = "Logout clicked!";
-                int duration2 = Toast.LENGTH_SHORT;
 
-                Toast toast2 = Toast.makeText(context2, text2, duration2);
-                toast2.show();
+                LibraryService.logout(new Callback<Boolean>() {
+                    @Override
+                    public void onCompletion(Boolean input) {
+
+                        Toast toast = Toast.makeText(getApplicationContext(), "Erfolgreich ausgeloggt", Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                });
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
