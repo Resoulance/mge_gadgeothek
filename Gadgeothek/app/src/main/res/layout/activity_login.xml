@@ -48,21 +48,35 @@
         android:paddingRight="40dp"
         android:paddingTop="40dp">
 
-        <EditText
-            android:id="@+id/eMailText"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="eMail Adresse"
-            android:inputType="textPersonName" />
+            app:errorEnabled="true">
 
-        <EditText
-            android:id="@+id/passwortText"
+            <EditText
+                android:id="@+id/eMailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="eMail Adresse"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Passwort"
-            android:inputType="textPassword" />
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/passwortText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Passwort"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
