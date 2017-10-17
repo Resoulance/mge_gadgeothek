@@ -21,8 +21,8 @@
 
     <!-- Login -->
     <string name="pref_header_login">Login</string>
-    <string name="pref_title_display_name">Matrikel Nummer ändern</string>
-    <string name="pref_default_matrikel_number">"123456"</string>
+    <string name="pref_login_emailAddressTitle">Matrikel Nummer ändern</string>
+    <string name="pref_default_emailLogin">"123456"</string>
 
 
     <string-array name="pref_server_titles">

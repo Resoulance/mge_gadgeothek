@@ -12,4 +12,9 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Logout"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/option_Tester"
+        android:title="Tester"
+        app:showAsAction="never">
+    </item>
 </menu>
