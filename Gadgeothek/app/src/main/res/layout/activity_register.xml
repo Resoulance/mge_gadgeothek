@@ -26,8 +26,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="188dp"
-        android:layout_height="181dp"
+        android:layout_width="153dp"
+        android:layout_height="109dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/hsr_logo" />
 
@@ -43,47 +43,76 @@
         android:paddingLeft="40dp"
         android:paddingRight="40dp">
 
-
-        <EditText
-            android:id="@+id/nameText"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName" />
+            app:errorEnabled="true">
 
-        <EditText
-            android:id="@+id/eMailText"
+            <EditText
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="eMail Adresse"
-            android:inputType="textEmailAddress" />
+            app:errorEnabled="true">
 
-        <EditText
-            android:id="@+id/matrikelnummerText"
+            <EditText
+                android:id="@+id/eMailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="eMail Adresse"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputMatrikelNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Matrikel-Nummer"
-            android:inputType="textPersonName" />
+            app:errorEnabled="true">
 
-        <EditText
-            android:id="@+id/passwortTextEins"
+            <EditText
+                android:id="@+id/matrikelnummerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Matrikel-Nummer"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputPasswordOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="Passwort"
-            android:ems="10"
-            android:hint="Passwort"
-            android:inputType="textPassword" />
+            app:errorEnabled="true">
 
-        <EditText
-            android:id="@+id/passwortTextZwei"
+            <EditText
+                android:id="@+id/passwortTextEins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Passwort"
+                android:hint="Passwort"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textinputPasswordTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Passwort wiederholen"
-            android:inputType="textPassword" />
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/passwortTextZwei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Passwort wiederholen"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
 
 
     </LinearLayout>
