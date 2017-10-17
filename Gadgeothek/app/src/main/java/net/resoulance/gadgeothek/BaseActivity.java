@@ -46,6 +46,8 @@ abstract class BaseActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(String message) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
+                        toast.show();
 
                     }
                 });

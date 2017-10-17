@@ -3,7 +3,9 @@ package net.resoulance.gadgeothek;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
 
@@ -30,8 +33,16 @@ public class LoginActivity extends BaseActivity {
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
-        // ToDo: Hardcoded
 
+        // Note: checkt ob nicht eingeloggt -> checkt in der Settings ob die Option angewählt wurde --> automatisch einlogen
+        if (!LibraryService.isLoggedIn()){
+            if (true) {
+
+            }
+
+        }
+
+        // ToDo: Server Adresse aus der sharedpref holen
         LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
 
         loginButton.setOnClickListener(new View.OnClickListener() {
