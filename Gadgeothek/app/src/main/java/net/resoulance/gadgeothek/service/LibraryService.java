@@ -217,6 +217,16 @@ public class LibraryService {
             throw new IllegalStateException("Not logged in, call login before using this method.");
         }
     }
+
+    // Own Methods
+
+    public static boolean hasToken(){
+        if (token != null){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

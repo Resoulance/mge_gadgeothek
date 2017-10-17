@@ -12,10 +12,6 @@ import android.widget.Toast;
 import net.resoulance.gadgeothek.service.Callback;
 import net.resoulance.gadgeothek.service.LibraryService;
 
-/**
- * Created by sasch on 16.10.2017.
- */
-
 abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,7 +34,7 @@ abstract class BaseActivity extends AppCompatActivity {
                     @Override
                     public void onCompletion(Boolean input) {
 
-                        if (LibraryService.isLoggedIn()) {
+                        if (LibraryService.hasToken()) {
 
                             Toast toast = Toast.makeText(getApplicationContext(), "Erfolgreich ausgeloggt", Toast.LENGTH_SHORT);
                             toast.show();
@@ -48,6 +44,7 @@ abstract class BaseActivity extends AppCompatActivity {
                         } else {
                             Toast toast = Toast.makeText(getApplicationContext(), "Bereits ausgeloggt", Toast.LENGTH_SHORT);
                             toast.show();
+
 
                         }
                     }
