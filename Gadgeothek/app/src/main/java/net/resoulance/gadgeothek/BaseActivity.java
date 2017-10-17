@@ -15,8 +15,9 @@ import net.resoulance.gadgeothek.service.LibraryService;
 
 abstract class BaseActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor prefEditor;
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,13 +66,10 @@ abstract class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.option_Tester:
 
-                SharedPreferences prefs = this.getSharedPreferences("net.resoulance.app", Context.MODE_PRIVATE);
+                                //Werte aus der Settings lesen und dann über den Toaster zeigen
 
 
-                //Werte aus der Settings lesen und dann über den Toaster zeigen
-                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String testString = sharedPreferences.getString("loginpref_email", "bla");
 
 

@@ -32,6 +32,9 @@ public class LoginActivity extends BaseActivity {
         Button loginButton = (Button) findViewById(R.id.loginButton);
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
+        SharedPreferences sharedPreferences;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
 
 
         // Note: checkt ob nicht eingeloggt -> checkt in der Settings ob die Option angewählt wurde --> automatisch einlogen
@@ -50,6 +53,12 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
                 String eMail = eMailLogin.getText().toString();
                 String password = passwordLogin.getText().toString();
+
+
+                prefEditor.putString("loginpref_email", eMail);
+                prefEditor.commit();
+
+
 
                 LibraryService.login(eMail, password, new Callback<Boolean>() {
                     @Override
