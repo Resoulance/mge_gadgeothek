@@ -15,6 +15,8 @@ import net.resoulance.gadgeothek.service.LibraryService;
 
 abstract class BaseActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor prefEditor;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,35 +34,34 @@ abstract class BaseActivity extends AppCompatActivity {
 
                 return true;
             case R.id.option_logout:
+                if (LibraryService.hasToken()) {
+                    LibraryService.logout(new Callback<Boolean>() {
+                        @Override
+                        public void onCompletion(Boolean input) {
 
-                LibraryService.logout(new Callback<Boolean>() {
-                    @Override
-                    public void onCompletion(Boolean input) {
 
-                        if (LibraryService.hasToken()) {
 
                             Toast toast = Toast.makeText(getApplicationContext(), "Erfolgreich ausgeloggt", Toast.LENGTH_SHORT);
                             toast.show();
-                            Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        } else {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Bereits ausgeloggt", Toast.LENGTH_SHORT);
-                            toast.show();
 
+                            Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
+                            startActivity(intent);
 
                         }
-                    }
 
-                    @Override
-                    public void onError(String message) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
-                        toast.show();
+                        @Override
+                        public void onError(String message) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
+                            toast.show();
 
-                    }
-                });
+                        }
+                    });
 
-                return true;
+                    return true;
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Error: Kein Token", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             case R.id.option_Tester:
 
                 //Werte aus der Settings lesen und dann über den Toaster zeigen

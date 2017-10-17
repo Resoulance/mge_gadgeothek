@@ -42,8 +42,8 @@ public class LoginActivity extends BaseActivity {
 
         alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
 
-        if (alwaysLogin){
-            eMail = sharedPreferences.getString("loginpref_email","");
+        if (alwaysLogin) { //  && sharedPreferences.getBoolean("loginpref_logout", false)
+            eMail = sharedPreferences.getString("loginpref_email", "");
             password = sharedPreferences.getString("loginpref_password", "");
             LibraryService.login(eMail, password, new Callback<Boolean>() {
                 @Override
@@ -65,8 +65,7 @@ public class LoginActivity extends BaseActivity {
         }
 
         // setzt letzte e-Mail Adresse in das Textfeld ein, wenn es nicht existiert dann einen leeren String
-        eMailLogin.setText(sharedPreferences.getString("loginpref_email",""));
-
+        eMailLogin.setText(sharedPreferences.getString("loginpref_email", ""));
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -75,11 +74,9 @@ public class LoginActivity extends BaseActivity {
                 String eMail = eMailLogin.getText().toString();
                 String password = passwordLogin.getText().toString();
 
-
                 prefEditor.putString("loginpref_email", eMail);
                 prefEditor.putString("loginpref_password", password);
                 prefEditor.commit();
-
 
 
                 LibraryService.login(eMail, password, new Callback<Boolean>() {
