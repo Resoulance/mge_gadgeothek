@@ -15,8 +15,7 @@ import net.resoulance.gadgeothek.service.LibraryService;
 
 abstract class BaseActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor prefEditor;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,7 +67,7 @@ abstract class BaseActivity extends AppCompatActivity {
 
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String testString = sharedPreferences.getString("loginpref_password", "bla");
+                String testString = sharedPreferences.getString("loginpref_serveraddress", "bla");
 
 
                 Toast toast = Toast.makeText(getApplicationContext(), testString, Toast.LENGTH_SHORT);

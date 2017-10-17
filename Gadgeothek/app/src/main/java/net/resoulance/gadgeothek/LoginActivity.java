@@ -33,14 +33,15 @@ public class LoginActivity extends BaseActivity {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
-        String eMail, password;
+        String eMail, password, serveraddress;
         boolean alwaysLogin;
 
-
-        // ToDo: Server Adresse aus der sharedpref holen
-        LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
+        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
+        LibraryService.setServerAddress(serveraddress);
 
         alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
+
+
 
         if (alwaysLogin) { //  && sharedPreferences.getBoolean("loginpref_logout", false)
             eMail = sharedPreferences.getString("loginpref_email", "");

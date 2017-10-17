@@ -17,6 +17,7 @@
         android:title="Passwort merken" />
 
     <ListPreference
+        android:key="loginpref_serveraddress"
         android:defaultValue="1"
         android:entries="@array/pref_server_titles"
         android:entryValues="@array/pref_server_values"
