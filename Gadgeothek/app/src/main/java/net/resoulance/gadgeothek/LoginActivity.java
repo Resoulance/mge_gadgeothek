@@ -43,15 +43,7 @@ public class LoginActivity extends BaseActivity {
                 LibraryService.login(eMail, password, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {
-                        Context context = getApplicationContext();
-                        CharSequence text = "Login erfolgreich";
-                        int duration = Toast.LENGTH_SHORT;
 
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
-
-                        // Start new Intent for Gadget Overview
-                        // ToDo
                         Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
                         startActivity(intent);
                     }
