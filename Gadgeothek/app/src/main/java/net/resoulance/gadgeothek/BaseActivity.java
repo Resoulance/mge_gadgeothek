@@ -16,17 +16,18 @@ import net.resoulance.gadgeothek.service.LibraryService;
 abstract class BaseActivity extends AppCompatActivity {
 
 
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
 
-        if (!LibraryService.isLoggedIn()){
+        if (!LibraryService.isLoggedIn()) {
             menu.findItem(R.id.option_logout).setVisible(false);
         }
+
+        if(true){
+            menu.findItem(R.id.option_Tester).setVisible(false);
+        }
+
         return true;
     }
 
