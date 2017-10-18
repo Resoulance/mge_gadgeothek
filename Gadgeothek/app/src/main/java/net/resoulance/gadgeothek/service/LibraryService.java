@@ -218,15 +218,7 @@ public class LibraryService {
         }
     }
 
-    // Own Methods
 
-    public static boolean hasToken(){
-        if (token != null){
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
 
 
