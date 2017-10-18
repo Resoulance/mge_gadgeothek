@@ -4,6 +4,7 @@
     <string name="title_activity_login">Activity_Login</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_reservation">ReservationActivity</string>
+
     <string name="action_settings">Settings</string>
     <string name="title_loans">Loans</string>
     <string name="title_reservations">Reservations</string>

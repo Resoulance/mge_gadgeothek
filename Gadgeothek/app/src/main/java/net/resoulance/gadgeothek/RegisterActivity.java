@@ -43,7 +43,7 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
-        String serveraddress;
+        String eMail, password, serveraddress;
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
@@ -51,9 +51,9 @@ public class RegisterActivity extends BaseActivity {
         LibraryService.setServerAddress(serveraddress);
 
 
-        toLogin.setOnClickListener(new View.OnClickListener(){
+        toLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -64,13 +64,14 @@ public class RegisterActivity extends BaseActivity {
             public void onClick(View view) {
                 String name = nameEditText.getText().toString();
                 String matrikelNumber = matrikelNumberEditText.getText().toString();
-                final String email = emailEditText.getText().toString();
-                final String passwordOne = passwordOneEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
                 if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "") {
-                    // simpler Passwortchecker: keine Längenüberprüfung, Sonderzeichen etc.
-                    if (passwordOne != passwordTwo) {
+                    // ToDo: Regex password
+                    //ToDo: Regex email & matrikel number
+                    if (!passwordOne.equals(passwordTwo)) {
 
                         passwordTwoWrapper.setError("Passwort stimmt nicht überein");
 
@@ -78,8 +79,8 @@ public class RegisterActivity extends BaseActivity {
                         LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
-                                prefEditor.putString("loginpref_email", email);
-                                prefEditor.putString("loginpref_password", passwordOne);
+                                prefEditor.putString("loginpref_email", emailEditText.getText().toString());
+                                prefEditor.putString("loginpref_password", passwordOneEditText.getText().toString());
                                 prefEditor.putBoolean("loginpref_logout", false);
                                 prefEditor.commit();
 

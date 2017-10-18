@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             LibraryService.login(eMail, password, new Callback<Boolean>() {
                 @Override
                 public void onCompletion(Boolean input) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "automatisch eingelogt", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "automatisch eingeloggt", Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(MainActivity.this, ReservationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
