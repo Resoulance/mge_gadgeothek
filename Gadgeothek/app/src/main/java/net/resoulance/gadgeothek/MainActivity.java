@@ -29,15 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
 
-        if(sharedPreferences.getBoolean("loginpref_firstlogin", true)){
-            prefEditor.putBoolean("loginpref_firstlogin",false);
+        if (sharedPreferences.getBoolean("loginpref_firstlogin", true)) {
+            prefEditor.putBoolean("loginpref_firstlogin", false);
             prefEditor.putBoolean("loginpref_logout", true);
             prefEditor.putString("loginpref_serveraddress", "http://mge1.dev.ifs.hsr.ch/public");
             prefEditor.putString("loginpref_email", "");
             prefEditor.putString("loginpref_password", "");
             prefEditor.commit();
         }
-
 
 
         if (alwaysLogin && !sharedPreferences.getBoolean("loginpref_logout", true)) {

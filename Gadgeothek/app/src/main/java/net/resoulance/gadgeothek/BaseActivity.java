@@ -24,7 +24,7 @@ abstract class BaseActivity extends AppCompatActivity {
             menu.findItem(R.id.option_logout).setVisible(false);
         }
 
-        if(true){
+        if (true) {
             menu.findItem(R.id.option_Tester).setVisible(false);
         }
 
@@ -35,7 +35,7 @@ abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // Handle item selection
+
         switch (item.getItemId()) {
             case R.id.option_settings:
                 Intent intent = new Intent(BaseActivity.this, SettingsActivity.class);

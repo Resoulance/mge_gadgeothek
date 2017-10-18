@@ -45,7 +45,7 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
-        String eMail, password, serveraddress;
+        String serveraddress;
         // General Email Regex (RFC 5322 Official Standard)
         final Pattern p = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 
@@ -72,10 +72,10 @@ public class RegisterActivity extends BaseActivity {
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
                 boolean check1 = p.matcher(email).matches();
-                boolean check2 = passwordOne.length() <= 5;
+                boolean check2 = passwordOne.length() > 5;
                 boolean check3 = passwordOne.equals(passwordTwo);
 
-                if (name == "" || matrikelNumber == "" ||  email == "" ||  passwordOne == "" ||  !check1 || check2 || !check3) {
+                if (name == "" || matrikelNumber == "" || email == "" || passwordOne == "" || !check1 || !check2 || !check3) {
                     //ToDo: Regex Matrikel number
 
                     if (!check1) {
@@ -84,7 +84,7 @@ public class RegisterActivity extends BaseActivity {
                         emailWrapper.setError(null);
                     }
 
-                    if (check2) {
+                    if (!check2) {
                         passwordOneWrapper.setError("zu kurzes Passwort");
                     } else {
                         passwordOneWrapper.setError(null);
