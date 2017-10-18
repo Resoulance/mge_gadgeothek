@@ -44,7 +44,6 @@ public class RegisterActivity extends BaseActivity {
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
         String eMail, password, serveraddress;
-        Context context = getApplicationContext();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
