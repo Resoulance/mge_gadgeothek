@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="269dp"
-        android:layout_height="254dp"
+        android:layout_width="191dp"
+        android:layout_height="136dp"
         android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/hsr_logo" />
 

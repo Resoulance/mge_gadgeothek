@@ -46,6 +46,7 @@ public class RegisterActivity extends BaseActivity {
         String serveraddress;
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
         serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
         LibraryService.setServerAddress(serveraddress);
 
@@ -63,8 +64,8 @@ public class RegisterActivity extends BaseActivity {
             public void onClick(View view) {
                 String name = nameEditText.getText().toString();
                 String matrikelNumber = matrikelNumberEditText.getText().toString();
-                String email = emailEditText.getText().toString();
-                String passwordOne = passwordOneEditText.getText().toString();
+                final String email = emailEditText.getText().toString();
+                final String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
                 if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "") {
@@ -77,6 +78,10 @@ public class RegisterActivity extends BaseActivity {
                         LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
+                                prefEditor.putString("loginpref_email", email);
+                                prefEditor.putString("loginpref_password", passwordOne);
+                                prefEditor.putBoolean("loginpref_logout", false);
+                                prefEditor.commit();
 
                                 Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
