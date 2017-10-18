@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity {
                 LibraryService.login(eMail, password, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {
-
+                        passwordLogin.setText("");
                         Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
