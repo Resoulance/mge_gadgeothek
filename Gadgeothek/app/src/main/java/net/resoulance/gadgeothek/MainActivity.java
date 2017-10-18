@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.resoulance.gadgeothek.service.Callback;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView splashtext = (TextView) findViewById(R.id.splash_textview);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
         boolean alwaysLogin;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (alwaysLogin && !sharedPreferences.getBoolean("loginpref_logout", true)) {
+            splashtext.setText("Waiting for Server Response...");
             serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
             LibraryService.setServerAddress(serveraddress);
             eMail = sharedPreferences.getString("loginpref_email", "");
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
         }
 
