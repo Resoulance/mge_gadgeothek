@@ -2,8 +2,10 @@ package net.resoulance.gadgeothek;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
@@ -40,10 +42,14 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout passwordOneWrapper = (TextInputLayout) findViewById(R.id.textinputPassword);
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
-
-
-
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
+        String serveraddress;
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
+        LibraryService.setServerAddress(serveraddress);
+
+
         toLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -61,12 +67,6 @@ public class RegisterActivity extends BaseActivity {
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
-                // ToDo: --------- Hardcoded String for Library-Service for testing purpose!!!!!!!!!!!!!!!!
-
-                LibraryService.setServerAddress("http://mge7.dev.ifs.hsr.ch/public");
-
-
-
                 if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "") {
                     // simpler Passwortchecker: keine Längenüberprüfung, Sonderzeichen etc.
                     if (passwordOne != passwordTwo) {
@@ -77,23 +77,16 @@ public class RegisterActivity extends BaseActivity {
                         LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
-                                // ToDo
-                                Context context = getApplicationContext();
-                                CharSequence text = "Okay";
-                                int duration = Toast.LENGTH_SHORT;
 
-                                Toast toast = Toast.makeText(context, text, duration);
-                                toast.show();
+                                Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                startActivity(intent);
+
                             }
 
                             @Override
                             public void onError(String message) {
-                                // ToDo
-                                Context context = getApplicationContext();
-                                CharSequence text = "Error";
-                                int duration = Toast.LENGTH_SHORT;
-
-                                Toast toast = Toast.makeText(context, text, duration);
+                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                                 toast.show();
                             }
                         });

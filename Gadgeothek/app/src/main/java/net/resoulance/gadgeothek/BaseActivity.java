@@ -35,7 +35,7 @@ abstract class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.option_logout:
 
-                sharedPreferences.edit().putBoolean("loginpref_logout",true);
+                sharedPreferences.edit().putBoolean("loginpref_logout", true);
                 sharedPreferences.edit().commit();
 
                 if (LibraryService.hasToken()) {
@@ -53,8 +53,6 @@ abstract class BaseActivity extends AppCompatActivity {
                         }
 
 
-
-
                         @Override
                         public void onError(String message) {
                             Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
@@ -70,13 +68,7 @@ abstract class BaseActivity extends AppCompatActivity {
                 }
             case R.id.option_Tester:
 
-                //Werte aus der Settings lesen und dann über den Toaster zeigen
-
-
-
-                String testString = sharedPreferences.getString("loginpref_serveraddress", "bla");
-
-
+                String testString = sharedPreferences.getString("loginpref_serveraddress", "Setting nicht gefunden");
                 Toast toast = Toast.makeText(getApplicationContext(), testString, Toast.LENGTH_SHORT);
                 toast.show();
 
