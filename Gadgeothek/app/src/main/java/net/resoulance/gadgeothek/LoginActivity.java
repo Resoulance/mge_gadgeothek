@@ -37,7 +37,7 @@ public class LoginActivity extends BaseActivity {
         String eMail, password, serveraddress;
 
 
-        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
+        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "http://mge1.dev.ifs.hsr.ch/public");
         LibraryService.setServerAddress(serveraddress);
 
         // setzt letzte e-Mail Adresse in das Textfeld ein, wenn es nicht existiert dann einen leeren String

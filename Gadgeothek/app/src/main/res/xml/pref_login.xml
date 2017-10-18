@@ -1,15 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_emailLogin"
-        android:inputType="textCapWords"
-        android:key="loginpref_email"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_login_emailAddressTitle" />
-
     <SwitchPreference
         android:defaultValue="true"
         android:key="loginpref_switch"
