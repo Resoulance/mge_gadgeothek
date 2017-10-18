@@ -35,36 +35,10 @@ public class LoginActivity extends BaseActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
         String eMail, password, serveraddress;
-        boolean alwaysLogin;
+
 
         serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
         LibraryService.setServerAddress(serveraddress);
-
-        alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
-
-
-
-        if (alwaysLogin && !sharedPreferences.getBoolean("loginpref_logout", true)) {
-            eMail = sharedPreferences.getString("loginpref_email", "");
-            password = sharedPreferences.getString("loginpref_password", "");
-            LibraryService.login(eMail, password, new Callback<Boolean>() {
-                @Override
-                public void onCompletion(Boolean input) {
-                    Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                }
-
-                @Override
-                public void onError(String message) {
-                    Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-                    toast.show();
-
-                }
-            });
-
-
-        }
 
         // setzt letzte e-Mail Adresse in das Textfeld ein, wenn es nicht existiert dann einen leeren String
         eMailLogin.setText(sharedPreferences.getString("loginpref_email", ""));
