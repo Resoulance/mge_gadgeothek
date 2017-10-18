@@ -21,10 +21,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
         boolean alwaysLogin;
         String eMail, password, serveraddress;
 
         alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
+
+        if(sharedPreferences.getBoolean("loginpref_firstlogin", true)){
+            prefEditor.putBoolean("loginpref_firstlogin",false);
+            prefEditor.putString("loginpref_serveraddress", "http://mge1.dev.ifs.hsr.ch/public");
+            prefEditor.putString("loginpref_email", "");
+            prefEditor.putString("loginpref_password", "");
+
+            prefEditor.commit();
+        }
+
+
 
         if (alwaysLogin && !sharedPreferences.getBoolean("loginpref_logout", true)) {
             serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
