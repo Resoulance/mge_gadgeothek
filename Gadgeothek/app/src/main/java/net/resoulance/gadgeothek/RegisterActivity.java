@@ -84,12 +84,13 @@ public class RegisterActivity extends BaseActivity {
                                 String password = passwordOneEditText.getText().toString();
                                 prefEditor.putString("loginpref_email", email);
                                 prefEditor.putString("loginpref_password", password);
-                                prefEditor.putBoolean("loginpref_logout", false);
                                 prefEditor.commit();
 
                                 LibraryService.login(email, password, new Callback<Boolean>() {
                                     @Override
                                     public void onCompletion(Boolean input) {
+                                        prefEditor.putBoolean("loginpref_logout", false);
+                                        prefEditor.commit();
                                         Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                         startActivity(intent);

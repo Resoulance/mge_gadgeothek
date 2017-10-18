@@ -16,6 +16,7 @@ import net.resoulance.gadgeothek.service.LibraryService;
 abstract class BaseActivity extends AppCompatActivity {
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
@@ -25,7 +26,7 @@ abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.option_settings:
@@ -35,18 +36,13 @@ abstract class BaseActivity extends AppCompatActivity {
                 return true;
             case R.id.option_logout:
 
-                sharedPreferences.edit().putBoolean("loginpref_logout", true);
-                sharedPreferences.edit().commit();
-
-                if (LibraryService.hasToken()) {
+                if (LibraryService.isLoggedIn()) {
                     LibraryService.logout(new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
 
-
-                            Toast toast = Toast.makeText(getApplicationContext(), "Erfolgreich ausgeloggt", Toast.LENGTH_SHORT);
-                            toast.show();
-
+                            sharedPreferences.edit().putBoolean("loginpref_logout", false);
+                            sharedPreferences.edit().commit();
                             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
                             startActivity(intent);
 
@@ -55,7 +51,7 @@ abstract class BaseActivity extends AppCompatActivity {
 
                         @Override
                         public void onError(String message) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Logout Fehler", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                             toast.show();
 
                         }
@@ -67,9 +63,11 @@ abstract class BaseActivity extends AppCompatActivity {
                     toast.show();
                 }
             case R.id.option_Tester:
-
-                String testString = sharedPreferences.getString("loginpref_serveraddress", "Setting nicht gefunden");
-                Toast toast = Toast.makeText(getApplicationContext(), testString, Toast.LENGTH_SHORT);
+                String user = sharedPreferences.getString("loginpref_email", "Setting nicht gefunden");
+                String password = sharedPreferences.getString("loginpref_password", "Setting nicht gefunden");
+                String server = sharedPreferences.getString("loginpref_serveraddress", "Setting nicht gefunden");
+                String output = "eMail: " + user + "\nPasswort: " + password + "\nServer: " + server;
+                Toast toast = Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT);
                 toast.show();
 
                 return true;
