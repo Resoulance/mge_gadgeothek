@@ -81,20 +81,28 @@ public class RegisterActivity extends BaseActivity {
                             @Override
                             public void onCompletion(Boolean input) {
 
-                                //ToDo: falscher Kontext?
-                                String string = "Marcel";
-                                string = emailEditText.getText().toString();
-                                Toast toast = Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT);
-                                toast.show();
-/*
-                                prefEditor.putString("loginpref_email", emailEditText.getText().toString());
-                                prefEditor.putString("loginpref_password", passwordOneEditText.getText().toString());
+                                String email = emailEditText.getText().toString();
+                                String password = passwordOneEditText.getText().toString();
+                                prefEditor.putString("loginpref_email", email);
+                                prefEditor.putString("loginpref_password", password);
                                 prefEditor.putBoolean("loginpref_logout", false);
-                                prefEditor.commit();*/
+                                prefEditor.commit();
 
-                                Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                startActivity(intent);
+                                LibraryService.login(email, password, new Callback<Boolean>() {
+                                    @Override
+                                    public void onCompletion(Boolean input) {
+                                        Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                        startActivity(intent);
+                                    }
+
+                                    @Override
+                                    public void onError(String message) {
+                                        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                        toast.show();
+                                    }
+                                });
+
 
                             }
 
