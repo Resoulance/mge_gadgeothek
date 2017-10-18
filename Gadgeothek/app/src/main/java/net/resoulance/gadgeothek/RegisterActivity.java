@@ -71,23 +71,25 @@ public class RegisterActivity extends BaseActivity {
                 String email = emailEditText.getText().toString();
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
+                boolean check1 = p.matcher(email).matches();
+                boolean check2 = passwordOne.length() <= 5;
+                boolean check3 = passwordOne.equals(passwordTwo);
 
-                if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "" || !p.matcher(email).matches() || passwordOne.length() <= 5 || !passwordOne.equals(passwordTwo)) {
-
+                if (name == "" || matrikelNumber == "" ||  email == "" ||  passwordOne == "" ||  !check1 || check2 || !check3) {
                     //ToDo: Regex Matrikel number
 
-                    if (!p.matcher(email).matches()) {
+                    if (!check1) {
                         emailWrapper.setError("ungültige E-Mail Adresse");
                     } else {
                         emailWrapper.setError(null);
                     }
 
-                    if (passwordOne.length() <= 5) {
+                    if (check2) {
                         passwordOneWrapper.setError("zu kurzes Passwort");
                     } else {
                         passwordOneWrapper.setError(null);
                     }
-                    if (!passwordOne.equals(passwordTwo)) {
+                    if (!check3) {
                         passwordTwoWrapper.setError("Passwort stimmt nicht überein");
                     } else {
                         passwordTwoWrapper.setError(null);
@@ -95,10 +97,11 @@ public class RegisterActivity extends BaseActivity {
 
 
                 } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "start", Toast.LENGTH_SHORT);
+                    toast.show();
                     LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
-
                             String email = emailEditText.getText().toString();
                             String password = passwordOneEditText.getText().toString();
                             prefEditor.putString("loginpref_email", email);

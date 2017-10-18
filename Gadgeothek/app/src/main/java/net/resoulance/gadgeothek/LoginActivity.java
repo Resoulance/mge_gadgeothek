@@ -32,13 +32,12 @@ public class LoginActivity extends BaseActivity {
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
         String eMail, password, serveraddress;
 
 
-        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
-        LibraryService.setServerAddress(serveraddress);
+        refreshServerAddress(sharedPreferences);
 
         // setzt letzte e-Mail Adresse in das Textfeld ein, wenn es nicht existiert dann einen leeren String
         eMailLogin.setText(sharedPreferences.getString("loginpref_email", ""));
@@ -54,6 +53,7 @@ public class LoginActivity extends BaseActivity {
                 prefEditor.putString("loginpref_password", password);
                 prefEditor.putBoolean("loginpref_logout", false);
                 prefEditor.commit();
+                refreshServerAddress(sharedPreferences);
 
 
                 LibraryService.login(eMail, password, new Callback<Boolean>() {
@@ -67,8 +67,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(String message) {
-                        CharSequence text = "Login fehlgeschlagen";
-                        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 });
@@ -86,5 +85,11 @@ public class LoginActivity extends BaseActivity {
         });
 
 
+    }
+
+    private void refreshServerAddress(SharedPreferences sharedPreferences) {
+        String serveraddress;
+        serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
+        LibraryService.setServerAddress(serveraddress);
     }
 }
