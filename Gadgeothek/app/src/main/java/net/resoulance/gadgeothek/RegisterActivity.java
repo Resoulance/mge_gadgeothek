@@ -20,6 +20,8 @@ import net.resoulance.gadgeothek.service.LibraryService;
 
 import org.w3c.dom.Text;
 
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends BaseActivity {
 
 
@@ -39,11 +41,13 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout nameWrapper = (TextInputLayout) findViewById(R.id.textinputName);
         final TextInputLayout emailWrapper = (TextInputLayout) findViewById(R.id.textinputEmail);
         final TextInputLayout matrikelnumberWrapper = (TextInputLayout) findViewById(R.id.textinputMatrikelNumber);
-        final TextInputLayout passwordOneWrapper = (TextInputLayout) findViewById(R.id.textinputPassword);
+        final TextInputLayout passwordOneWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordOne);
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
         String eMail, password, serveraddress;
+        // General Email Regex (RFC 5322 Official Standard)
+        final Pattern p = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
@@ -68,52 +72,65 @@ public class RegisterActivity extends BaseActivity {
                 String passwordOne = passwordOneEditText.getText().toString();
                 String passwordTwo = passwordTwoEditText.getText().toString();
 
-                if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "") {
-                    // ToDo: Regex password
-                    //ToDo: Regex email & matrikel number
-                    if (!passwordOne.equals(passwordTwo)) {
+                if (name != "" || matrikelNumber != "" || email != "" || passwordOne != "" || !p.matcher(email).matches() || passwordOne.length() <= 5 || !passwordOne.equals(passwordTwo)) {
 
-                        passwordTwoWrapper.setError("Passwort stimmt nicht überein");
+                    //ToDo: Regex Matrikel number
 
+                    if (!p.matcher(email).matches()) {
+                        emailWrapper.setError("ungültige E-Mail Adresse");
                     } else {
-                        LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
-                            @Override
-                            public void onCompletion(Boolean input) {
-
-                                String email = emailEditText.getText().toString();
-                                String password = passwordOneEditText.getText().toString();
-                                prefEditor.putString("loginpref_email", email);
-                                prefEditor.putString("loginpref_password", password);
-                                prefEditor.commit();
-
-                                LibraryService.login(email, password, new Callback<Boolean>() {
-                                    @Override
-                                    public void onCompletion(Boolean input) {
-                                        prefEditor.putBoolean("loginpref_logout", false);
-                                        prefEditor.commit();
-                                        Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                        startActivity(intent);
-                                    }
-
-                                    @Override
-                                    public void onError(String message) {
-                                        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-                                        toast.show();
-                                    }
-                                });
-
-
-                            }
-
-                            @Override
-                            public void onError(String message) {
-                                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-                                toast.show();
-                            }
-                        });
+                        emailWrapper.setError(null);
                     }
 
+                    if (passwordOne.length() <= 5) {
+                        passwordOneWrapper.setError("zu kurzes Passwort");
+                    } else {
+                        passwordOneWrapper.setError(null);
+                    }
+                    if (!passwordOne.equals(passwordTwo)) {
+                        passwordTwoWrapper.setError("Passwort stimmt nicht überein");
+                    } else {
+                        passwordTwoWrapper.setError(null);
+                    }
+
+
+                } else {
+                    LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
+                        @Override
+                        public void onCompletion(Boolean input) {
+
+                            String email = emailEditText.getText().toString();
+                            String password = passwordOneEditText.getText().toString();
+                            prefEditor.putString("loginpref_email", email);
+                            prefEditor.putString("loginpref_password", password);
+                            prefEditor.commit();
+
+                            LibraryService.login(email, password, new Callback<Boolean>() {
+                                @Override
+                                public void onCompletion(Boolean input) {
+                                    prefEditor.putBoolean("loginpref_logout", false);
+                                    prefEditor.commit();
+                                    Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onError(String message) {
+                                    Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                                    toast.show();
+                                }
+                            });
+
+
+                        }
+
+                        @Override
+                        public void onError(String message) {
+                            Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    });
                 }
             }
         });
