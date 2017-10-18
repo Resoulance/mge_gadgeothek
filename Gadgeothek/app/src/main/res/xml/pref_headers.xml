@@ -5,6 +5,6 @@
     <header
         android:fragment="net.resoulance.gadgeothek.SettingsActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/pref_header_login" />
+        android:title="@string/pref_header_loginTitle" />
 
 </preference-headers>

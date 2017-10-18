@@ -8,12 +8,13 @@
     <string name="action_settings">Settings</string>
     <string name="title_loans">Loans</string>
     <string name="title_reservations">Reservations</string>
+    <string name="title_activity_main">MainActivity</string>
 
 
     <!-- Strings related to Settings -->
 
     <!-- Login -->
-    <string name="pref_header_login">Login</string>
+    <string name="pref_header_loginTitle">Login</string>
     <string name="pref_login_emailAddressTitle">eMail Adresse ändern</string>
     <string name="pref_default_emailLogin">""</string>
 
@@ -46,6 +47,6 @@
 
 
     </string-array>
-    <string name="title_activity_main">MainActivity</string>
+
 
 </resources>

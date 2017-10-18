@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                                 ? listPreference.getEntries()[index]
                                 : null);
 
-            }  else {
+            } else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.
                 preference.setSummary(stringValue);
@@ -111,38 +111,26 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     public boolean onIsMultiPane() {
         return isXLargeTablet(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void onBuildHeaders(List<Header> target) {
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
 
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
+
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+                || GeneralPreferenceFragment.class.getName().equals(fragmentName);
     }
 
-    /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class GeneralPreferenceFragment extends PreferenceFragment {
         @Override
@@ -151,12 +139,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_login);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-  /*          bindPreferenceSummaryToValue(findPreference("server_titles"));
-            bindPreferenceSummaryToValue(findPreference("server_values"));*/
+
         }
 
         @Override
@@ -170,62 +153,5 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
     }
 
-    /**
-     * This fragment shows notification preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class NotificationPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-    /**
-     * This fragment shows data and sync preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class DataSyncPreferenceFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            setHasOptionsMenu(true);
-
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("sync_frequency"));
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            int id = item.getItemId();
-            if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    }
 }
