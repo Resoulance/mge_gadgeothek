@@ -82,10 +82,13 @@ public class RegisterActivity extends BaseActivity {
                             public void onCompletion(Boolean input) {
 
                                 //ToDo: falscher Kontext?
-/*                                String test1 = emailEditText.getText().toString();
-                                String test2 = passwordOneEditText.getText().toString();
-                                prefEditor.putString("loginpref_email", test1);
-                                prefEditor.putString("loginpref_password", test2);
+                                String string = "Marcel";
+                                string = emailEditText.getText().toString();
+                                Toast toast = Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT);
+                                toast.show();
+/*
+                                prefEditor.putString("loginpref_email", emailEditText.getText().toString());
+                                prefEditor.putString("loginpref_password", passwordOneEditText.getText().toString());
                                 prefEditor.putBoolean("loginpref_logout", false);
                                 prefEditor.commit();*/
 
