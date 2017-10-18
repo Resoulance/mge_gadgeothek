@@ -44,6 +44,7 @@ public class RegisterActivity extends BaseActivity {
         Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
         String eMail, password, serveraddress;
+        Context context = getApplicationContext();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
@@ -79,10 +80,14 @@ public class RegisterActivity extends BaseActivity {
                         LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
-                                prefEditor.putString("loginpref_email", emailEditText.getText().toString());
-                                prefEditor.putString("loginpref_password", passwordOneEditText.getText().toString());
+
+                                //ToDo: falscher Kontext?
+/*                                String test1 = emailEditText.getText().toString();
+                                String test2 = passwordOneEditText.getText().toString();
+                                prefEditor.putString("loginpref_email", test1);
+                                prefEditor.putString("loginpref_password", test2);
                                 prefEditor.putBoolean("loginpref_logout", false);
-                                prefEditor.commit();
+                                prefEditor.commit();*/
 
                                 Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
