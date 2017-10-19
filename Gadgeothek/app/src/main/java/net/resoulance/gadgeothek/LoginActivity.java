@@ -24,8 +24,12 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // ToDo Title etc in XML auslagern
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Gadgeothek");
+        //toolbar.setLogo(R.mipmap.ic_launcher_round);
         setSupportActionBar(toolbar);
+
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
         Button loginButton = (Button) findViewById(R.id.loginButton);
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
@@ -77,7 +81,9 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
             }
         });
 

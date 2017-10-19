@@ -4,6 +4,7 @@ package net.resoulance.gadgeothek;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,9 +17,12 @@ import android.widget.Toast;
 
 import net.resoulance.gadgeothek.fragments.LoanListFragment;
 import net.resoulance.gadgeothek.fragments.ReservationListFragment;
+import net.resoulance.gadgeothek.service.Callback;
 import net.resoulance.gadgeothek.service.ItemSelectionListener;
+import net.resoulance.gadgeothek.service.LibraryService;
 
 public class ReservationActivity extends BaseActivity implements ItemSelectionListener {
+
 
 
 
@@ -45,13 +49,42 @@ public class ReservationActivity extends BaseActivity implements ItemSelectionLi
         }
     };
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+        LibraryService.setServerAddress(sharedPreferences.getString("loginpref_serveraddress", ""));
+        if(!LibraryService.isLoggedIn()){
+            LibraryService.login(sharedPreferences.getString("loginpref_email", ""), sharedPreferences.getString("loginpref_password", ""), new Callback<Boolean>() {
+                @Override
+                public void onCompletion(Boolean input) {
+
+                }
+
+                @Override
+                public void onError(String message) {
+                    prefEditor.putBoolean("preflogin_logout", false);
+                    prefEditor.commit();
+                    Intent intent = new Intent(ReservationActivity.this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+
+                }
+            });
+        }
+
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
+        // ToDo Title etc in XML auslagern
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Gadgeothek");
         setSupportActionBar(toolbar);
 
         setTitle("Loans");
@@ -74,6 +107,7 @@ public class ReservationActivity extends BaseActivity implements ItemSelectionLi
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
     }
+
     private Boolean exit = false;
 
     @Override

@@ -15,7 +15,7 @@ import net.resoulance.gadgeothek.service.LibraryService;
 
 abstract class BaseActivity extends AppCompatActivity {
 
-    boolean devOn = true;
+    boolean devOn = false;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
@@ -71,10 +71,6 @@ abstract class BaseActivity extends AppCompatActivity {
                     toast.show();
                 }
             case R.id.option_Tester:
-                Intent intent1 = new Intent(BaseActivity.this, PrefActivity.class);
-                startActivity(intent1);
-
-
                 String user = sharedPreferences.getString("loginpref_email", "Setting nicht gefunden");
                 String password = sharedPreferences.getString("loginpref_password", "Setting nicht gefunden");
                 String server = sharedPreferences.getString("loginpref_serveraddress", "Setting nicht gefunden");

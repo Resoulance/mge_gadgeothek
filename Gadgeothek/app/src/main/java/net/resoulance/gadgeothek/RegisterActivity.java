@@ -29,8 +29,10 @@ public class RegisterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        // ToDo Title etc in XML auslagern
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolbar.setTitle("Gadgeothek");
+
 
         final EditText nameEditText = (EditText) findViewById(R.id.nameText);
         final EditText emailEditText = (EditText) findViewById(R.id.eMailText);
@@ -114,8 +116,9 @@ public class RegisterActivity extends BaseActivity {
                                     prefEditor.putBoolean("loginpref_logout", false);
                                     prefEditor.commit();
                                     Intent intent = new Intent(RegisterActivity.this, ReservationActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
+                                    finish();
                                 }
 
                                 @Override
