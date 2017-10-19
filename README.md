@@ -18,9 +18,8 @@ Donnerstag, 2.11.2017, 0810 - 0855
 
 ## MGE Server 7
 
-
-email: flo@hsr.ch
-password: asdf1234
+* email: flo@hsr.ch
+* password: asdf1234
 
 ### servergui 
 
