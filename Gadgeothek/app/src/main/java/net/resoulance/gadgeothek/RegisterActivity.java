@@ -1,12 +1,9 @@
 package net.resoulance.gadgeothek;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.SharedPreferences;;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;

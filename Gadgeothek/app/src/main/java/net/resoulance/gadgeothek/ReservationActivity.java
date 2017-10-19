@@ -59,7 +59,8 @@ public class ReservationActivity extends BaseActivity implements ItemSelectionLi
             LibraryService.login(sharedPreferences.getString("loginpref_email", ""), sharedPreferences.getString("loginpref_password", ""), new Callback<Boolean>() {
                 @Override
                 public void onCompletion(Boolean input) {
-
+                    prefEditor.putBoolean("preflogin_logout", true);
+                    prefEditor.commit();
                 }
 
                 @Override

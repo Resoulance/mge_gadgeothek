@@ -1,7 +1,5 @@
 package net.resoulance.gadgeothek;
 
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -95,4 +93,7 @@ public class LoginActivity extends BaseActivity {
         serveraddress = sharedPreferences.getString("loginpref_serveraddress", "");
         LibraryService.setServerAddress(serveraddress);
     }
+
+
+
 }

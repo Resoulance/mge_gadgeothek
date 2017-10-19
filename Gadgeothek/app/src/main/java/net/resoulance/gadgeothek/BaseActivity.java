@@ -1,6 +1,5 @@
 package net.resoulance.gadgeothek;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +29,8 @@ abstract class BaseActivity extends AppCompatActivity {
 
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
