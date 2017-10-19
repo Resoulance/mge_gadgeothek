@@ -27,15 +27,11 @@ public class LoginActivity extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
-
         Button loginButton = (Button) findViewById(R.id.loginButton);
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
-
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
-        String eMail, password, serveraddress;
-
 
         refreshServerAddress(sharedPreferences);
 
@@ -61,8 +57,9 @@ public class LoginActivity extends BaseActivity {
                     public void onCompletion(Boolean input) {
                         passwordLogin.setText("");
                         Intent intent = new Intent(LoginActivity.this, ReservationActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override
