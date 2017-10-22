@@ -4,13 +4,13 @@ package net.resoulance.gadgeothek.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import net.resoulance.gadgeothek.R;
 import net.resoulance.gadgeothek.adapter.LoanAdapter;
@@ -65,8 +65,12 @@ public class LoanListFragment extends Fragment {
                 adapter = new LoanAdapter(loans, itemSelectionCallback);
                 recyclerView.setAdapter(adapter);
                 if(getUserVisibleHint() && adapter.getLoanedGadgets().size() == 0){
+                    /*
                     Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Ausleihe vorhanden", Snackbar.LENGTH_LONG)
                             .show();
+                            */
+                    Toast toast = Toast.makeText(getActivity(), "Noch keine Ausleihe vorhanden", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
             @Override
