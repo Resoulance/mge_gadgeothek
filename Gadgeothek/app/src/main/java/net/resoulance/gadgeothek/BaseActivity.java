@@ -158,9 +158,7 @@ abstract class BaseActivity extends AppCompatActivity {
                     LibraryService.logout(new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
-
-
-                            Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(BaseActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
 
