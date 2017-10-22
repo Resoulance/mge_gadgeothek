@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationListFragment extends Fragment {
-    private final List<Gadget> allGadgets = new ArrayList<>();
+    private List<Gadget> allGadgets = new ArrayList<>();
     private ArrayList<Gadget> reservableGadgets = new ArrayList<>();
     private int itemToReserve;
     private ItemSelectionListener itemSelectionCallback = null;
@@ -42,7 +42,6 @@ public class ReservationListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_reservation_list, container, false);
         recyclerView = (RecyclerView)rootView.findViewById(R.id.reservationRecyclerView);
 
-        // Eine Optimierung, wenn sich die Displaygroesse der Liste nicht aendern wird.
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -57,31 +56,31 @@ public class ReservationListFragment extends Fragment {
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition(); //get position which is swipe
 
-                if (direction == ItemTouchHelper.LEFT) {    //direction == ItemTouchHelper.LEFT //if swipe left
+                if (direction == ItemTouchHelper.LEFT) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()); //alert for confirm to delete
-                    builder.setMessage("Wollen Sie die Reservierung löschen?");    //set message
+                    builder.setMessage("Wollen Sie die Reservierung löschen?");
 
                     builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() { //when click on DELETE
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            adapter.notifyItemRemoved(position);    //item removed from recylcerview
+                            adapter.notifyItemRemoved(position);
                             adapter.deleteEntry(position);
                             return;
                         }
                     }).setNegativeButton("Nein", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            adapter.notifyItemRemoved(position + 1);    //notifies the RecyclerView Adapter that data in adapter has been removed at a particular position.
-                            adapter.notifyItemRangeChanged(position, adapter.getItemCount());   //notifies the RecyclerView Adapter that positions of element in adapter has been changed from position(removed element index to end of list), please update it.
+                            adapter.notifyItemRemoved(position + 1);
+                            adapter.notifyItemRangeChanged(position, adapter.getItemCount());
                             return;
                         }
-                    }).show();  //show alert dialog
+                    }).show();
                 }
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView); //set swipe to recylcerview
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         getReservations();
 
@@ -187,10 +186,8 @@ public class ReservationListFragment extends Fragment {
     private void showGadgetsDialog() {
         refreshReservableGadgets();
         final CharSequence[] gadget = getReservableGadgetNames(reservableGadgets);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Wähle ein Gadget").setSingleChoiceItems(gadget, -1, new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 itemToReserve = item;
@@ -201,9 +198,9 @@ public class ReservationListFragment extends Fragment {
         builder.setPositiveButton(positiveText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
+                refreshReservableGadgets();
                 Gadget toReserve = reservableGadgets.get(itemToReserve);
                 final String reservation = toReserve.getName() + " reserviert";
-
                 LibraryService.reserveGadget(toReserve, new Callback<Boolean>() {
                     @Override
                     public void onCompletion(Boolean input) {
