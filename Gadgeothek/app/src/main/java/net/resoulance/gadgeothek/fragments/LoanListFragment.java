@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.resoulance.gadgeothek.R;
@@ -26,6 +27,8 @@ public class LoanListFragment extends Fragment {
 
     private ItemSelectionListener itemSelectionCallback = null;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView emptyView;
     private LinearLayoutManager layoutManager;
     private LoanAdapter adapter;
 
@@ -35,6 +38,8 @@ public class LoanListFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_loan_list, container, false);
 
         recyclerView = (RecyclerView)rootView.findViewById(R.id.loanRecyclerView);
+        emptyView = (TextView)rootView.findViewById(R.id.emptyElement);
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.loansRefreshLayout);
 
         // Eine Optimierung, wenn sich die Displaygroesse der Liste nicht aendern wird.
         recyclerView.setHasFixedSize(true);
@@ -45,7 +50,6 @@ public class LoanListFragment extends Fragment {
         getLoans();
 
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.loansRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             public void onRefresh() {
                 getLoans();
@@ -64,14 +68,22 @@ public class LoanListFragment extends Fragment {
             public void onCompletion(List<Loan> loans) {
                 adapter = new LoanAdapter(loans, itemSelectionCallback);
                 recyclerView.setAdapter(adapter);
-                if(getUserVisibleHint() && adapter.getLoanedGadgets().size() == 0){
+                if (adapter.getLoanedGadgets().size() == 0) {
+                    swipeRefreshLayout.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                } else {
+                    swipeRefreshLayout.setVisibility(View.VISIBLE);
+                    emptyView.setVisibility(View.GONE);
+                    if(getUserVisibleHint() && adapter.getLoanedGadgets().size() == 0){
                     /*
                     Snackbar.make(getActivity().findViewById(android.R.id.content), "Keine Ausleihe vorhanden", Snackbar.LENGTH_LONG)
                             .show();
                             */
-                    Toast toast = Toast.makeText(getActivity(), "Noch keine Ausleihe vorhanden", Toast.LENGTH_SHORT);
-                    toast.show();
+                        Toast toast = Toast.makeText(getActivity(), "Noch keine Ausleihe vorhanden", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
+
             }
             @Override
             public void onError(String message) {

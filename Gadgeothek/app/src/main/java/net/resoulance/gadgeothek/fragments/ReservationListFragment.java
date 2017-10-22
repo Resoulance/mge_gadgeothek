@@ -13,6 +13,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.resoulance.gadgeothek.R;
@@ -33,6 +34,8 @@ public class ReservationListFragment extends Fragment {
     private int itemToReserve;
     private ItemSelectionListener itemSelectionCallback = null;
     private RecyclerView recyclerView;
+    private TextView emptyView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private LinearLayoutManager layoutManager;
     private ReservationsAdapter adapter;
 
@@ -41,6 +44,8 @@ public class ReservationListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_reservation_list, container, false);
         recyclerView = (RecyclerView)rootView.findViewById(R.id.reservationRecyclerView);
+        emptyView = (TextView)rootView.findViewById(R.id.emptyElement);
+        swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.reservationsRefreshLayout);
 
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -64,8 +69,9 @@ public class ReservationListFragment extends Fragment {
                     builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() { //when click on DELETE
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            adapter.notifyItemRemoved(position);
                             adapter.deleteEntry(position);
+                            adapter.notifyItemRemoved(position);
+                            adjustViews();
                             return;
                         }
                     }).setNegativeButton("Nein", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
@@ -101,7 +107,7 @@ public class ReservationListFragment extends Fragment {
             }
         });
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.reservationsRefreshLayout);
+        //final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.reservationsRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             public void onRefresh() {
                 getReservations();
@@ -120,6 +126,7 @@ public class ReservationListFragment extends Fragment {
                 adapter = new ReservationsAdapter(reservations, itemSelectionCallback);
                 refreshReservableGadgets();
                 recyclerView.setAdapter(adapter);
+                adjustViews();
                 if (getUserVisibleHint() && adapter.getReservedGadgets().size() == 0) {
                     Toast toast = Toast.makeText(getActivity(), "Keine Reservationen vorhanden", Toast.LENGTH_SHORT);
                     toast.show();
@@ -149,6 +156,17 @@ public class ReservationListFragment extends Fragment {
         });
 
         setGadgets();
+    }
+
+    private void adjustViews() {
+        if(adapter.getReservedGadgets().size() == 0) {
+            swipeRefreshLayout.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+
+        } else {
+            swipeRefreshLayout.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
     }
 
     private void setGadgets() {     
