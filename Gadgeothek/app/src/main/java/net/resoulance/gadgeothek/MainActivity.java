@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onCompletion(Boolean input) {
                     Intent intent = new Intent(MainActivity.this, ReservationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
                     finish();
                 }

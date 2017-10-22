@@ -15,6 +15,11 @@
     <item
         android:id="@+id/option_Tester"
         android:title="Tester"
-        app:showAsAction="never">
-    </item>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/optoin_switchserver"
+        android:title="Switch Server"
+        app:showAsAction="never"
+        />
 </menu>
