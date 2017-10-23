@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(String message) {
-                    Toast toast = Toast.makeText(getApplicationContext(), "automatisch eingeloggen fehlgeschlagen", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Automatisches Login fehlgeschlagen", Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
