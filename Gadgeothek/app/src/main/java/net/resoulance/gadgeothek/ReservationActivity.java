@@ -117,7 +117,7 @@ public class ReservationActivity extends BaseActivity implements ItemSelectionLi
         if (exit) {
             finish(); // finish activity
         } else {
-            Toast.makeText(this, "Press Back again to Exit.",
+            Toast.makeText(this, "Press back again to exit.",
                     Toast.LENGTH_SHORT).show();
             exit = true;
             new Handler().postDelayed(new Runnable() {
