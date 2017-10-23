@@ -77,7 +77,6 @@ public class ReservationListFragment extends Fragment {
                     }).setNegativeButton("Nein", new DialogInterface.OnClickListener() {  //not removing items if cancel is done
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            adapter.notifyItemRemoved(position + 1);
                             adapter.notifyItemRangeChanged(position, adapter.getItemCount());
                             return;
                         }
