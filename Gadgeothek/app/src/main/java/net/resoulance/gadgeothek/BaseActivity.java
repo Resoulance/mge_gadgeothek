@@ -24,6 +24,12 @@ abstract class BaseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
 
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", true);
+        menu.findItem(R.id.option_autologin).setChecked(alwaysLogin);
+
+
+
         if (!LibraryService.isLoggedIn()) {
             menu.findItem(R.id.option_logout).setVisible(false);
         }
@@ -90,7 +96,10 @@ abstract class BaseActivity extends AppCompatActivity {
                 showServerDialogue();
                 return true;
             case R.id.option_autologin:
-                item.setChecked(!item.isChecked());
+                boolean alwaysLogin = sharedPreferences.getBoolean("loginpref_switch", false);
+                alwaysLogin = !alwaysLogin;
+                item.setChecked(alwaysLogin);
+                sharedPreferences.edit().putBoolean("loginpref_switch", alwaysLogin).commit();
             default:
                 return super.onOptionsItemSelected(item);
         }

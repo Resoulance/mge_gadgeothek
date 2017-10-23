@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             prefEditor.putString("loginpref_serveraddress", "http://mge1.dev.ifs.hsr.ch/public");
             prefEditor.putString("loginpref_email", "");
             prefEditor.putString("loginpref_password", "");
+            prefEditor.putBoolean("loginpref_switch", true);
             prefEditor.commit();
         }
 

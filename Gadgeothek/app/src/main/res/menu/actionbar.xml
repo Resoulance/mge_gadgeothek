@@ -26,7 +26,6 @@
         android:id="@+id/option_autologin"
         android:title="Autologin"
         android:checkable="true"
-        android:checked="true"
         app:showAsAction="never"
         />
 
