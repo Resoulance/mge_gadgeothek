@@ -96,8 +96,6 @@ public class RegisterActivity extends BaseActivity {
 
 
                 } else {
-                    Toast toast = Toast.makeText(getApplicationContext(), "start", Toast.LENGTH_SHORT);
-                    toast.show();
                     LibraryService.register(email, passwordOne, name, matrikelNumber, new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
