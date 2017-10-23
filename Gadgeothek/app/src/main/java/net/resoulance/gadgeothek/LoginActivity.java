@@ -29,7 +29,7 @@ public class LoginActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         TextView toRegister = (TextView) findViewById(R.id.toregisterTextView);
-        Button loginButton = (Button) findViewById(R.id.loginButton);
+        final Button loginButton = (Button) findViewById(R.id.loginButton);
         final EditText eMailLogin = (EditText) findViewById(R.id.eMailText);
         final EditText passwordLogin = (EditText) findViewById(R.id.passwortText);
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -44,6 +44,7 @@ public class LoginActivity extends BaseActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loginButton.setEnabled(false);
                 String eMail = eMailLogin.getText().toString();
                 String password = passwordLogin.getText().toString();
 
@@ -66,6 +67,7 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onError(String message) {
+                        loginButton.setEnabled(true);
                         Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                         toast.show();
                     }
