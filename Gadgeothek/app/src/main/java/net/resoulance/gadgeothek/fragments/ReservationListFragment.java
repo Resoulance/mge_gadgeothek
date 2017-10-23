@@ -51,7 +51,7 @@ public class ReservationListFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
                 return false;
@@ -61,7 +61,7 @@ public class ReservationListFragment extends Fragment {
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition(); //get position which is swipe
 
-                if (direction == ItemTouchHelper.LEFT) {
+                if (direction == ItemTouchHelper.LEFT || direction == ItemTouchHelper.RIGHT) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()); //alert for confirm to delete
                     builder.setMessage("Wollen Sie die Reservierung löschen?");
