@@ -49,11 +49,6 @@ abstract class BaseActivity extends AppCompatActivity {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         switch (item.getItemId()) {
-            case R.id.option_settings:
-                Intent intent = new Intent(BaseActivity.this, PrefActivity.class);
-                startActivity(intent);
-
-                return true;
             case R.id.option_logout:
 
                 if (LibraryService.isLoggedIn()) {
