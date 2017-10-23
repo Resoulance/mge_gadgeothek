@@ -42,7 +42,7 @@ public class RegisterActivity extends BaseActivity {
         final TextInputLayout matrikelnumberWrapper = (TextInputLayout) findViewById(R.id.textinputMatrikelNumber);
         final TextInputLayout passwordOneWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordOne);
         final TextInputLayout passwordTwoWrapper = (TextInputLayout) findViewById(R.id.textinputPasswordTwo);
-        Button registerUser = (Button) findViewById(R.id.registrierenButton);
+        final Button registerUser = (Button) findViewById(R.id.registrierenButton);
         TextView toLogin = (TextView) findViewById(R.id.toLoginTextView);
         String serveraddress;
         // General Email Regex (RFC 5322 Official Standard)
@@ -65,6 +65,7 @@ public class RegisterActivity extends BaseActivity {
         registerUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registerUser.setEnabled(false);
                 String name = nameEditText.getText().toString();
                 String matrikelNumber = matrikelNumberEditText.getText().toString();
                 String email = emailEditText.getText().toString();
@@ -118,6 +119,7 @@ public class RegisterActivity extends BaseActivity {
 
                                 @Override
                                 public void onError(String message) {
+                                    registerUser.setEnabled(true);
                                     Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                                     toast.show();
                                 }
@@ -128,6 +130,7 @@ public class RegisterActivity extends BaseActivity {
 
                         @Override
                         public void onError(String message) {
+                            registerUser.setEnabled(true);
                             Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
                             toast.show();
                         }
