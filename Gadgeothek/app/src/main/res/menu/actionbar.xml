@@ -18,8 +18,16 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/optoin_switchserver"
+        android:id="@+id/option_switchserver"
         android:title="Switch Server"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/option_autologin"
+        android:title="Autologin"
+        android:checkable="true"
+        android:checked="true"
+        app:showAsAction="never"
+        />
+
 </menu>

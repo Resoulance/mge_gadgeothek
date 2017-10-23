@@ -86,9 +86,11 @@ abstract class BaseActivity extends AppCompatActivity {
                 toast.show();
 
                 return true;
-            case R.id.optoin_switchserver:
+            case R.id.option_switchserver:
                 showServerDialogue();
                 return true;
+            case R.id.option_autologin:
+                item.setChecked(!item.isChecked());
             default:
                 return super.onOptionsItemSelected(item);
         }
