@@ -54,6 +54,7 @@ public class ReservationActivity extends BaseActivity implements ItemSelectionLi
         super.onResume();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+
         LibraryService.setServerAddress(sharedPreferences.getString("loginpref_serveraddress", ""));
         if(!LibraryService.isLoggedIn()){
             LibraryService.login(sharedPreferences.getString("loginpref_email", ""), sharedPreferences.getString("loginpref_password", ""), new Callback<Boolean>() {

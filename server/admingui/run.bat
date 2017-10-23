@@ -1,1 +1,1 @@
-java -Dserver=mge7.dev.ifs.hsr.ch -jar gadgeothek-admin.jar
+java -Dserver=mge8.dev.ifs.hsr.ch -jar gadgeothek-admin.jar
