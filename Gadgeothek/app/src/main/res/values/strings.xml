@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">Gadgeothek</string>
     <string name="title_activity_register">Activity_register</string>
-    <string name="title_activity_login">Activity_Login</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_reservation">ReservationActivity</string>
 
-    <string name="action_settings">Settings</string>
     <string name="title_loans">Loans</string>
     <string name="title_reservations">Reservations</string>
     <string name="title_activity_main">MainActivity</string>
@@ -14,39 +10,6 @@
     <!-- Strings related to Settings -->
 
     <!-- Login -->
-    <string name="pref_header_loginTitle">Login</string>
-    <string name="pref_login_emailAddressTitle">eMail Adresse ändern</string>
-    <string name="pref_default_emailLogin">""</string>
-
-
-    <string-array name="pref_server_titles">
-        <item>MGE Server 1</item>
-        <item>MGE Server 2</item>
-        <item>MGE Server 3</item>
-        <item>MGE Server 4</item>
-        <item>MGE Server 5</item>
-        <item>MGE Server 6</item>
-        <item>MGE Server 7</item>
-        <item>MGE Server 8</item>
-        <item>MGE Server 9</item>
-        <item>MGE Server 10</item>
-
-
-    </string-array>
-    <string-array name="pref_server_values">
-        <item>http://mge1.dev.ifs.hsr.ch/public</item>
-        <item>http://mge2.dev.ifs.hsr.ch/public</item>
-        <item>http://mge3.dev.ifs.hsr.ch/public</item>
-        <item>http://mge4.dev.ifs.hsr.ch/public</item>
-        <item>http://mge5.dev.ifs.hsr.ch/public</item>
-        <item>http://mge6.dev.ifs.hsr.ch/public</item>
-        <item>http://mge7.dev.ifs.hsr.ch/public</item>
-        <item>http://mge8.dev.ifs.hsr.ch/public</item>
-        <item>http://mge9.dev.ifs.hsr.ch/public</item>
-        <item>http://mge10.dev.ifs.hsr.ch/public</item>
-
-
-    </string-array>
 
 
 </resources>
