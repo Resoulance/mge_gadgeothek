@@ -56,7 +56,7 @@ abstract class BaseActivity extends AppCompatActivity {
                         @Override
                         public void onCompletion(Boolean input) {
 
-                            sharedPreferences.edit().putBoolean("loginpref_logout", false);
+                            sharedPreferences.edit().putBoolean("loginpref_logout", true);
                             sharedPreferences.edit().putString("loginpref_password", "");
                             sharedPreferences.edit().commit();
                             Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
