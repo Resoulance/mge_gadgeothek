@@ -114,7 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center"
-            android:text="Noch kein Konto? Registriere dich hier!" />
+            android:text="Noch kein Konto? Registriere dich hier!"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
