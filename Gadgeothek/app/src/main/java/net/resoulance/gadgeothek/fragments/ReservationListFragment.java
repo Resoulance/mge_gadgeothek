@@ -80,6 +80,12 @@ public class ReservationListFragment extends Fragment {
                             adapter.notifyItemRangeChanged(position, adapter.getItemCount());
                             return;
                         }
+                    }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            adapter.notifyItemRangeChanged(position, adapter.getItemCount());
+                            return;
+                        }
                     }).show();
                 }
             }
